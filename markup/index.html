@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/header-popups.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/footer.css">
+
+    <script src="js/jquery-3.6.3.js" ></script>
+
+    <title>WebDot</title>
+</head>
+<body>
+    
+    <header>
+        <div>
+
+            <nav>
+
+                <a href="#">
+                    <h1 class="logo">Web/Dot</h1>
+                </a>
+
+                <ul class="header-nav-list">
+                    <li id="serv">
+                        <a id="header-services" href="#">Services</a>
+                        <div id="service-popup">
+                            
+                        </div>
+                    </li>
+                    <li  class="industries">
+                        <a id="header-industry" href="#">Industries</a>
+                        <div id="industries-popup">
+
+                        </div>
+                    </li>
+                    <li class="сompanies">
+                        <a id="header-companies" href="#">Companies</a>
+                        <div id="companies-popup">
+
+                        </div>
+                    </li>
+                </ul>
+
+                <button id="estimate-project"
+                class="сonsultation-btn consultation" 
+                    
+                    >Estimate project
+
+                </button>
+
+                <ul class="header-nav-list-about">
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contacts</a></li>
+                </ul>
+
+                <div class="login-btn">
+                    <button href="#" id="open-modal">Log in</button>
+                </div>
+            </nav>
+
+            <div id="modal" class="modal">
+                <div class="modal-container">
+                    <div id="modal-popup" class="modal-window">
+                        <h1 class="logo">Web/Dot</h1>
+                        <h3>Sign In</h3>
+                        <div id="close-btn">&#10006</div>
+                        <div class="user-information">
+                            <div class="email">
+                                <form action="" method="">
+                                    <label for="email"></label>
+                                    <div class="output">
+                                        <input type="email" placeholder="Email Address" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="password">
+                                <form action="" method="">
+                                    <label for="password"></label>
+                                    <div class="output">
+                                        <input type="password" placeholder="Password" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <a href="#" class="forgot">Forgot password?</a>
+                        </div>
+            
+                        <div class="sign-in-btn">Sign In</div>
+            
+                        <div class="user-information">
+                            <!-- <div class="social-list">
+                                <ul>
+            
+                                </ul>
+                            </div> -->
+                            <a href="#" class="create-account">Create account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <main>
+
+        <video class="lofi-girl" autoplay muted loop>
+            <source src="./img/lofi-girl.mp4" type="video/mp4">
+        </video> 
+
+        <div class="container">
+
+            <div class="front-information">
+                <div class="gen-info">
+                    <div>Web</div>
+                    <div>Development Company</div>
+                    <button class="consultation">Get free consultation</button>
+                </div>
+
+                <div class="how-work">
+                    <div class="work-question">
+                        <a href="#">IT services that help businesses grow?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="desk-list">
+                <ul class="step-list">
+                    <li class="card">
+                        <div class="desk-num">
+                            <h3 class="step">#1</h3>
+                            <strong class="desk-name">Design services</strong>
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    CJM workshop
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    UI/UX design
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Design sprint
+                                </a>
+                            </li>
+                        </ul> 
+                    </li>
+                    <li class="card">
+                        <div class="desk-num">
+                            <h3 class="step">#2</h3>
+                            <strong class="desk-name">Web development</strong>
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Golang development
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Web applications
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    PWA development
+                                </a>
+                            </li>
+                        </ul> 
+                    </li>
+                    <li class="card">
+                        <div class="desk-num">
+                            <h3 class="step">#3</h3>
+                            <strong class="desk-name">Support and analytics</strong>
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Test automation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    SLA support
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Project management
+                                </a>
+                            </li>
+                        </ul> 
+                    </li>
+                </ul>
+            </div>
+
+            <div class="task-list">
+                <div class="question">
+                    <div class="work">
+                        <a href="#">How we will work on your project?</a>
+                    </div>
+                </div>
+                <ul class="steps">
+                    <li class="task-card">
+                        <div class="task-num">
+                            <h3 class="step">01</h3>
+                            <strong class="tesk-name">Design services</strong>
+                        </div>
+                        <div class="lorem">
+                            We agree on the feature list for the first and future releases,
+                            the timeline of their launch, and other specifications
+                            of our works during
+                            the project.
+                        </div>
+                    </li>
+
+                    <li class="task-card">
+                        <div class="task-num">
+                            <h3 class="step">02</h3>
+                            <strong class="tesk-name">Design the interface</strong>
+                        </div>
+                        <div class="lorem">
+                            We create an interface that will provide all the necessary
+                            options without looking cluttered: each detail will lead
+                            users to a desired action.
+                        </div>
+                    </li>
+
+                    <li class="task-card">
+                        <div class="task-num">
+                            <h3 class="step">03</h3>
+                            <strong class="tesk-name">Build the app</strong>
+                        </div>
+                        <div class="lorem">
+                            App builds will be delivered to you every
+                            2–3 weeks for feedback and approval.
+                            You can be sure you will get the app you want.
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="steps">
+                    <li class="task-card">
+                        <div class="task-num">
+                            <h3 class="step">04</h3>
+                            <strong class="tesk-name">Run tests</strong>
+                        </div>
+                        <div class="lorem">
+                            Your app will be secure and fail-safe: our automated
+                            tests give an 80% speed boost, and manual testing
+                            ensures no error is left untreated. 
+                        </div>
+                    </li>
+
+                    <li class="task-card">
+                        <div class="task-num">
+                            <h3 class="step">05</h3>
+                            <strong class="tesk-name">Launch the solution</strong>
+                        </div>
+                        <div class="lorem">
+                            The app will seamlessly substitute the previous solution
+                            if needed and ensure the audience conveniently switches
+                            to the new app.
+                        </div>
+                    </li>
+
+                    <li class="task-card">
+                        <div class="task-num">
+                            <h3 class="step">06</h3>
+                            <strong class="tesk-name">Support or move in-house</strong>
+                        </div>
+                        <div class="lorem">
+                            We can hand over the project to your in-house
+                            team or continue to support the app.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        
+    </main>
+
+    <footer>
+        <div class="main-footer">
+
+            <div class="col">
+                <strong id="section">Contact us...</strong>
+                <p>Let’s discuss your project together!</p>
+            </div>
+
+            <div class="contact-data">
+
+                <div class="row">
+                    <div class="con-email">
+                        <form action="" method="">
+                            <label for="email"></label>
+                            <div class="output">
+                                <input type="email" placeholder="Email Address*" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="con-email">
+                        <form action="" method="">
+                            <label for="email"></label>
+                            <div class="output">
+                                <input type="name" placeholder="Your name*" required>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="con-email">
+                        <form action="" method="">
+                            <label for="email"></label>
+                            <div class="output">
+                                <input type="company" placeholder="Company*" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="con-email">
+                        <form action="" method="">
+                            <label for="email"></label>
+                            <div class="output">
+                                <input type="details" placeholder="Project details*" required>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <button class="get-btn">Get free consultation</button>
+                    <div class="politic-conf">
+                        <input id="example" type="checkbox">
+                        <label for="example"></label>
+                        <div class="accept-txt">Accept the</div>
+                        <a href="#">
+                            privacy policy
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/sign-in-window.js"></script>
+    <script src="./js/service-popup.js"></script>
+    <script src="./js/industry-popup.js"></script>
+    <script src="./js/companies-popup.js"></script>
+</body>
+</html>
