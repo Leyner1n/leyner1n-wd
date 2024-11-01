@@ -1,0 +1,157 @@
+.lofi-girl {
+    width: 100%;
+    opacity: 0.62;
+}
+
+main .front-information {
+    display: flex;
+}
+
+main .gen-info {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 350px;
+    font-size: 53px;
+    font-weight: 900;
+    color: rgb(255, 245, 230);
+}
+
+main .gen-info button {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 15px 30px 15px 30px;
+    background-color: rgb(28, 197, 90);
+    border: 1px solid rgb(28, 197, 90);
+    color: rgba(26, 26, 26, 1);
+    border-radius: 7px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+main .gen-info button:hover {
+    background-color: rgba(26, 26, 26, 0.8);
+    color: rgb(28, 197, 90);
+    border: 1px solid rgb(26, 26, 26);
+}
+
+main .how-work  {
+    position: absolute;
+    left: 50%;
+    bottom: 70px;
+}
+
+main .how-work .work-question {
+    font-size: 43px;
+    font-weight: 800;
+}
+
+main .step-list {
+    display: flex;
+    /* position: relative; */
+    justify-content: space-between;
+    /* bottom: 120px; */
+}
+
+main .desk-list .step-list .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 350px;
+    width: 450px;
+    background-color: rgba(28, 197, 90, 0.8);
+    color: rgba(26, 26, 26, 1);
+    padding: 30px;
+    border-radius: 7px;
+    margin-bottom: 100px;
+}
+
+main .step-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+main .desk-list h3 {
+    color: rgba(26, 26, 26, 1);
+    font-size: 25px;
+    font-weight: 800;
+}
+
+main .desk-list strong {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+main .desk-list .card li {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+main .desk-list .card li a {
+    color: rgb(43, 42, 42);
+    text-decoration: underline;
+    transition: all ease 0.5s;
+}
+
+main .desk-list .card {
+    transition: all ease 0.5s;
+}
+
+main .desk-list .card:hover {
+    position: relative;
+    background-color:  rgb(31, 214, 98);
+    bottom: 5px;
+}
+
+main .desk-list .card  a:hover {
+    text-decoration: none;
+    color: rgb(255, 245, 230);
+}
+
+main .question .work {
+    display: flex;
+    font-size: 53px;
+    font-weight: 900;
+    color: rgb(255, 245, 230);
+    padding-bottom: 70px;
+}
+
+main .task-list .steps {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+main .task-list .task-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
+    width: 550px;
+    background-color: rgb(37, 37, 37);
+    color: rgb(180, 180, 180);
+    padding: 30px 110px 30px 30px;
+    border-radius: 7px;
+    margin-bottom: 80px;
+}
+
+main .task-list .task-card:hover {
+    position: relative;
+    bottom: 5px;
+}
+
+main .task-list .steps .task-card h3{
+    font-size: 20px;
+}
+
+main .task-list .steps .task-card strong{
+    font-size: 25px;
+}
+
+main .task-list .steps .task-card .lorem {
+    color: rgb(255, 245, 230);
+    font-size: 15px;
+    font-weight: 700;
+}

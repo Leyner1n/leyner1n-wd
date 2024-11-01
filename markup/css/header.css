@@ -1,0 +1,103 @@
+nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(26, 26, 26, 0.75);
+    bottom: 100vh;
+    z-index: 99999;
+    transition: all ease .4s;
+}
+
+nav .logo {
+    color: rgb(30, 214, 97);
+    margin-left: 30px;
+    font-weight: 800;
+    font-size: 25px;
+    transition: all ease 0.2s;
+}
+
+.header-nav-list {    
+    display: flex;
+    position: relative;
+    font-weight: 700;
+
+}
+
+.client-nav-list li {
+    display: flex;
+}
+
+.header-nav-list li:not(:first-child),
+.client-nav-list li:not(:first-child) {
+    margin-left: 50px;
+}
+
+nav .сonsultation-btn {
+    background-color: transparent;
+    border: 2px solid rgb(107, 161, 231);
+    background-color: rgb(107, 161, 231);
+    color: rgb(255, 245, 230);
+    font-weight: 900;
+    font-size: larger;
+    padding: 5px 40px;
+    cursor: pointer;
+    outline: 2px solid transparent;
+    outline-offset: 3px;
+    border-radius: 7px;
+    margin-right: 30px;
+    transition: all ease 0.3s;
+}
+
+.header-nav-list-about {    
+    display: flex;
+    position: relative;
+    font-weight: 700;
+}
+
+.client-nav-list-about li {
+    display: flex;
+}
+
+.header-nav-list-about li:not(:first-child),
+.client-nav-list-about li:not(:first-child) {
+    margin-left: 50px;
+}
+
+nav:hover {
+    background-color: rgba(26, 26, 26, 1);
+    height: 90px;
+}
+
+nav .logo:hover {
+    color: rgb(255, 245, 230);
+}
+
+nav .header-nav-list-about a:hover,
+nav .header-nav-list a:hover {
+    transition: all ease 0.25s;
+}
+
+nav .header-nav-list-about a:hover,
+nav .header-nav-list a:hover {
+    color: rgb(30, 214, 97);
+    border-bottom: 3px solid rgb(30, 214, 97);
+    padding-bottom: 15px;
+}
+
+nav .сonsultation-btn:hover {
+    color: rgb(107, 161, 231);
+    background-color: rgb(255, 245, 230);
+    border: 2px solid rgb(255, 245, 230);
+}
+
+nav .login-btn button:hover {
+    color:  rgb(30, 214, 97);
+    background-color: rgb(255, 245, 230);
+    border: 2px solid rgb(255, 245, 230);
+}
