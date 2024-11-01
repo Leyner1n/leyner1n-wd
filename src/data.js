@@ -13,9 +13,9 @@ const generateUser = () => {
 };
 
 const generateArticle = () => {
-    const photosKey = [];
+    const photos = [];
     for (let i = 1; i <= getRandomInt(1, 3); i ++) {
-        photosKey.push(getRandomArrayElement(ARTICLE_PHOTOS));
+        photos.push(getRandomArrayElement(ARTICLE_PHOTOS));
     }
     return {
         id: getRandomInt(1, 10),
@@ -23,7 +23,7 @@ const generateArticle = () => {
         content: getRandomArrayElement(ARTICLE_CONTENTS),
         created_at: '2024-01-01',
         user: generateUser(),
-        photos: photosKey
+        photos: photos
     };
 };
 
