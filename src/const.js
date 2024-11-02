@@ -25,8 +25,7 @@ const ARTICLE_PHOTOS = [
     '8.jpeg',
     '9.jpeg',
     '10.jpeg'
-]
-
+];
 
 export {
     ARTICLE_CONTENTS,
