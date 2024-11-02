@@ -41,8 +41,7 @@ const ARTICLE_PHOTOS = [
     '8.jpeg',
     '9.jpeg',
     '10.jpeg'
-]
-
+];
 
 
 
@@ -64,9 +63,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const MAX_PHOTO_COUNT = 3;
+
 const generateUser = () => {
     return {
-        id: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, 10),
+        id: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, 4),
         email: '@',
         password: '*****',
         avatar_path: './',
@@ -75,18 +76,27 @@ const generateUser = () => {
     };
 };
 
-const generateArticle = () => {
-    const photosKey = [];
-    for (let i = 1; i <= (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, 3); i ++) {
-        photosKey.push((0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_PHOTOS));
+const usedArticleIds = [];
+
+const generateArticle = (maxArticleId) => {
+    let articleId = (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, maxArticleId);
+    while (usedArticleIds.includes(articleId)) {
+        articleId = (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, maxArticleId);
     }
+    usedArticleIds.push(articleId);
+
+    const photos = [];
+    for (let i = 1; i <= (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_PHOTO_COUNT); i++) {
+        photos.push((0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_PHOTOS));
+    }
+
     return {
-        id: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, 10),
+        id: articleId,
         title: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_TITLES),
         content: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_CONTENTS),
         created_at: '2024-01-01',
         user: generateUser(),
-        photos: photosKey
+        photos: photos
     };
 };
 
@@ -94,7 +104,7 @@ const generateArticles = (count) => {
     const articles = [];
 
     for (let i = 1; i <= count; i++) {
-        articles.push(generateArticle());
+        articles.push(generateArticle(count));
     }
 
     return articles;
@@ -198,7 +208,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data */ "./src/data.js");
 
 
-const ARTICLE_COUNT = 4;
+const ARTICLE_COUNT = 5;
 
 const articles = (0,_data__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTICLE_COUNT);
 console.log(articles);
