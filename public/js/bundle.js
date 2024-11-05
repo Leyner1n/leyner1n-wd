@@ -2,6 +2,51 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/article-list.js":
+/*!*****************************!*\
+  !*** ./src/article-list.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   renderArticleList: () => (/* binding */ renderArticleList)
+/* harmony export */ });
+const articleTemplate = document.getElementById('article');
+const articleTemplateContent = articleTemplate.content;
+const articleTemplateElement = articleTemplateContent.querySelector('div');
+
+const  renderPhotoList = (photos, container) => {
+    for (const photo of photos) {
+        const html = `
+            <li class="photo-item">
+                <img class="" src="img/photo/${photo}" width="150" alt="">
+            </li>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+    }
+}
+const  renderArticleList = (articles, container) => {
+    for (const article of articles) {
+        const articleElement = articleTemplateElement.cloneNode(true);
+        const photoListElement = articleElement.querySelector('.photo-list');
+
+        articleElement.querySelector('.title').textContent = article.title;
+        articleElement.querySelector('.content').textContent = article.content;
+        articleElement.querySelector('.created-at').textContent = article.created_at;
+        articleElement.querySelector('.username').textContent = article.user.name;
+        articleElement.querySelector('.avatar').src = 'img/avatar/' + article.user.avatar_path;
+        renderPhotoList(article.photos, photoListElement);
+
+        container.append(articleElement);
+    }
+}
+
+
+
+
+/***/ }),
+
 /***/ "./src/const.js":
 /*!**********************!*\
   !*** ./src/const.js ***!
@@ -31,16 +76,16 @@ const ARTICLE_TITLES = [
 ];
 
 const ARTICLE_PHOTOS = [
-    '1.jpeg',
-    '2.jpeg',
-    '3.jpeg',
-    '4.jpeg',
-    '5.jpeg',
-    '6.jpeg',
-    '7.jpeg',
-    '8.jpeg',
-    '9.jpeg',
-    '10.jpeg'
+    '1.jpg',
+    '2.jpg',
+    '3.jpg',
+    '4.jpg',
+    '5.jpg',
+    '6.jpg',
+    '7.jpg',
+    '8.jpg',
+    '9.jpg',
+    '10.jpg'
 ];
 
 
@@ -64,13 +109,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const MAX_PHOTO_COUNT = 3;
+const MAX_AVATAR_COUNT = 3;
+const MAX_USER_COUNT = 4;
 
 const generateUser = () => {
     return {
-        id: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, 4),
+        id: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_USER_COUNT),
+        name: 'mr.Death',
         email: '@',
         password: '*****',
-        avatar_path: './',
+        avatar_path: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_AVATAR_COUNT) + '.jpg',
         locale: 'en',
         created_at: '2024-01-01',
     };
@@ -206,11 +254,16 @@ var __webpack_exports__ = {};
   \*********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data */ "./src/data.js");
+/* harmony import */ var _article_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./article-list */ "./src/article-list.js");
 
 
+
+const articleListElement = document.getElementById('app');
 const ARTICLE_COUNT = 5;
 
 const articles = (0,_data__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTICLE_COUNT);
+(0,_article_list__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
+
 console.log(articles);
 
 })();
