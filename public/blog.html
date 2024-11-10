@@ -3,29 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/blog-header.css">
+    <link rel="stylesheet" href="./css/blog-main.css">
+    <link rel="stylesheet" href="./css/template-card.css">
+    <link rel="stylesheet" href="./css/article-madal.css">
 
     <title>Webdot | Blog</title>
 </head>
 <body>
 
-<!--    <ul>-->
-<!--        <li><a href="index.html">main</a></li>-->
-<!--        <li><a href="blog.html" style="color: red !important;">blog</a></li>-->
-<!--    </ul>-->
+    <header>
+        <div class="header-container">
 
-    <div id="app"></div>
+            <nav>
+
+                <ul class="header-nav-list">
+                    <li>
+                        <a href="#">
+                            <h1 class="logo">Web/Dot</h1>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-home">Home</a>
+                    </li>
+                    <li>
+                        <a class="nav-create">Create</a>
+                    </li>
+                </ul>
+
+                <ul class="nav-user-list">
+                    <li>
+                        <a class="notifications">Notifications</a>
+                    </li>
+                    <li>
+                        <a class="message">Messages</a>
+                    </li>
+                    <li>
+                        <a>
+                            <img class="avatar" src="./img/avatar/5.jpg" width="70" alt="">
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+
+
+    <main class="main">
+        <div class="search">
+            <form>
+                <input type="text" placeholder="Search for...">
+            </form>
+            <ul class="sort-list">
+                <li>
+                    <a>All</a>
+                </li>
+                <li>
+                    <a>Most popular</a>
+                </li>
+                <li>
+                    <a>New</a>
+                </li>
+            </ul>
+        </div>
+        <div id="app"></div>
+    </main>
+
+    <div id="article-modal">
+        <div class="modal-body">
+            <div class="user">
+                <img class="avatar" src="" width="70" alt="">
+                <a class="username">placeholder</a>
+                <time class="created-at" datetime="">01.01.2024</time>
+            </div>
+
+            <h3 class="title"></h3>
+            <p class="content">placeholder</p>
+
+            <ul class="photo-list"></ul>
+        </div>
+    </div>
 
     <template id="article">
         <div class="article">
+            <div class="user">
+                <img class="avatar" src="" width="50" alt="">
+                <a class="username">placeholder</a>
+                <time class="created-at" datetime="">01.01.2024</time>
+            </div>
+
             <h3 class="title">placeholder</h3>
             <p class="content">placeholder</p>
-            <time class="created-at" datetime="">01.01.2024</time>
-
-            <div class="user">
-                <p class="username">placeholder</p>
-                <img class="avatar" src="" width="60" alt="">
-            </div>
 
             <ul class="photo-list">
             </ul>

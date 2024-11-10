@@ -1,0 +1,78 @@
+#app {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*background-color: rgb(61, 59, 59);*/
+    margin: 175px 0 60px 175px;
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0 15px 15px;
+    height: 380px;
+    width: 500px;
+    background-color: rgb(30, 30, 30);
+    margin-top: 40px;
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.article .user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.article .user .avatar {
+    margin-right: 15px;
+}
+
+.article .user .username {
+    font-weight: bolder;
+    font-size: 17px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.article .user .username:hover {
+    border-bottom: 2px solid;
+}
+
+.article .user .created-at {
+    font-weight: bolder;
+    font-size: 14px;
+    color: rgb(122, 122, 122);
+}
+
+.article .title {
+    font-weight: bolder;
+    font-size: 35px;
+}
+
+.article .content {
+    font-weight: bolder;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.photo-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.photo-list img {
+    object-fit: cover;
+    object-position: center;
+    width: 150px;
+    height: 150px;
+}
+
+.photo-list li:not(:first-child) {
+    margin-left: 10px;
+}
