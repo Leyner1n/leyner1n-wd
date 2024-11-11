@@ -1,6 +1,9 @@
+import {openArticleModal} from "./article-modal";
+
 const articleTemplate = document.getElementById('article');
 const articleTemplateContent = articleTemplate.content;
 const articleTemplateElement = articleTemplateContent.querySelector('div');
+
 
 const  renderPhotoList = (photos, container) => {
     for (const photo of photos) {
@@ -25,10 +28,16 @@ const  renderArticleList = (articles, container) => {
         articleElement.querySelector('.avatar').src = 'img/avatar/' + article.user.avatar_path;
         renderPhotoList(article.photos, photoListElement);
 
+        articleElement.addEventListener('click', function () {
+            openArticleModal(article)
+        });
+
         container.append(articleElement);
     }
 }
 
 export {
-    renderArticleList
+    renderArticleList,
+    renderPhotoList
 }
+

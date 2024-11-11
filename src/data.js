@@ -2,8 +2,9 @@ import {getRandomArrayElement, getRandomInt} from "./util";
 import {ARTICLE_CONTENTS, ARTICLE_PHOTOS, ARTICLE_TITLES} from "./const";
 
 const MAX_PHOTO_COUNT = 3;
-const MAX_AVATAR_COUNT = 3;
+const MAX_AVATAR_COUNT = 9;
 const MAX_USER_COUNT = 4;
+
 
 const generateUser = () => {
     return {
