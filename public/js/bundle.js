@@ -347,6 +347,7 @@ __webpack_require__.r(__webpack_exports__);
 const articleListElement = document.getElementById('app');
 // const ARTICLE_COUNT = 5;
 const ARTICLE_COUNT = 10;
+console.log(1)
 
 const articles = (0,_data__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTICLE_COUNT);
 (0,_article_list__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
