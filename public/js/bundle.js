@@ -2,6 +2,65 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/article-form-modal.js":
+/*!***********************************!*\
+  !*** ./src/article-form-modal.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setCreateArticleBtnClick: () => (/* binding */ setCreateArticleBtnClick)
+/* harmony export */ });
+/* harmony import */ var _article_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./article-modal */ "./src/article-modal.js");
+
+
+const articleFormModal = document.getElementById('article-form-modal');
+const articleFormOpenElement = document.getElementById('create-card');
+
+// articleFormOpenElement.addEventListener('click', function () {
+//     articleFormModal.classList.add('open');
+//     document.body.classList.add('modal-open');
+// })
+
+
+const openArticleFormModal = () => {
+    console.log(1);
+    articleFormModal.classList.add('open');
+    document.body.classList.add('modal-open');
+
+    articleFormModal.addEventListener('click', onOverlayClick);
+    document.addEventListener('keydown', onEscKeyDown);
+}
+
+const closeArticleFormModal = () => {
+    articleFormModal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+
+    articleFormOpenElement.removeEventListener('click', onOverlayClick);
+    document.removeEventListener('keydown', onEscKeyDown);
+}
+
+const onOverlayClick = (evt) => {
+    if (!evt.target.matches('.modal-body')) {
+        closeArticleFormModal()
+    }
+}
+
+const onEscKeyDown = (evt) => {
+    if (evt.code === 'Escape') {
+        closeArticleFormModal()
+    }
+}
+
+const setCreateArticleBtnClick = () => {
+    articleFormOpenElement.addEventListener('click', openArticleFormModal);
+}
+
+
+
+/***/ }),
+
 /***/ "./src/article-list.js":
 /*!*****************************!*\
   !*** ./src/article-list.js ***!
@@ -35,7 +94,7 @@ const  renderPhotoList = (photos, container) => {
 const  renderArticleList = (articles, container) => {
     for (const article of articles) {
         const articleElement = articleTemplateElement.cloneNode(true);
-        const photoListElement = articleElement.querySelector('.photo-list');
+        const photoListElement= articleElement.querySelector('.photo-list');
 
         articleElement.querySelector('.title').textContent = article.title;
         articleElement.querySelector('.content').textContent = article.content;
@@ -330,19 +389,19 @@ var __webpack_exports__ = {};
   !*** ./src/main.js ***!
   \*********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data */ "./src/data.js");
-/* harmony import */ var _article_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./article-list */ "./src/article-list.js");
-/* harmony import */ var _article_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./article-modal */ "./src/article-modal.js");
+/* harmony import */ var _data_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data.js */ "./src/data.js");
+/* harmony import */ var _article_list_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./article-list.js */ "./src/article-list.js");
+/* harmony import */ var _article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./article-form-modal.js */ "./src/article-form-modal.js");
 
 
 
 
 const articleListElement = document.getElementById('app');
-// const ARTICLE_COUNT = 5;
 const ARTICLE_COUNT = 10;
 
-const articles = (0,_data__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTICLE_COUNT);
-(0,_article_list__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
+const articles = (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTICLE_COUNT);
+(0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
+(0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
 
 })();
 

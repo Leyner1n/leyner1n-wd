@@ -8,7 +8,6 @@ nav {
     height: 100%;
     width: 150px;
     text-align: center;
-    /*background-color: rgb(24, 24, 24);*/
     transition: all ease .4s;
 }
 
@@ -16,13 +15,19 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 40px;
-    border-radius: 30px;
     background-color: rgba(30, 214, 97, 0);
     margin-top: 40px;
-    transition: all ease .3s;
     cursor: pointer;
+}
+
+.header-nav-list li:not(:nth-child(1)) a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    width: 80px;
+    height: 40px;
+    transition: all ease .3s;
 }
 
 nav .header-nav-list .nav-home {
@@ -69,12 +74,10 @@ nav .logo {
     font-size: larger;
 }
 
-.header-nav-list li:not(:nth-child(1)):hover {
+.header-nav-list li:not(:nth-child(1)):hover a {
     background-color: rgba(30, 214, 97, 1);
 }
 
 .nav-user-list li:not(:nth-child(3)):hover {
     background-color: rgba(30, 214, 97, 1);
 }
-
-
