@@ -18,7 +18,7 @@ const renderPhotoList = (photos, container) => {
 const renderArticleList = (articles, container) => {
     for (const article of articles) {
         const articleElement = articleTemplateElement.cloneNode(true);
-        const photoListElement = articleElement.querySelector('.photo-list');
+        const photoListElement= articleElement.querySelector('.photo-list');
 
         articleElement.dataset.id = article.id;
         articleElement.querySelector('.title').textContent = article.title;

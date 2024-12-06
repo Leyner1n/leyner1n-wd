@@ -2,6 +2,81 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/article-form-content.js":
+/*!*************************************!*\
+  !*** ./src/article-form-content.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   addPostFile: () => (/* binding */ addPostFile)
+/* harmony export */ });
+const uploadFile = document.getElementById('upload-file');
+const uploadBtn = document.getElementById('upload-btn');
+
+const openConductor = () => {
+    uploadFile.click();
+}
+
+const addPostFile = () => {
+    uploadBtn.addEventListener('click', openConductor);
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/article-form-modal.js":
+/*!***********************************!*\
+  !*** ./src/article-form-modal.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setCreateArticleBtnClick: () => (/* binding */ setCreateArticleBtnClick)
+/* harmony export */ });
+const articleFormModal = document.getElementById('article-form-modal');
+const articleFormOpenElement = document.getElementById('create-card');
+const articleFormCloseBtn = document.getElementById('close-btn');
+
+const openArticleFormModal = () => {
+    articleFormModal.classList.add('open');
+    document.body.classList.add('modal-open');
+
+    articleFormCloseBtn.addEventListener('click', onCloseBtnClick)
+    document.addEventListener('keydown', onEscKeyDown);
+}
+
+const closeArticleFormModal = () => {
+    articleFormModal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+
+
+    document.removeEventListener('keydown', onEscKeyDown);
+}
+
+const onCloseBtnClick = () => {
+    articleFormModal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+}
+
+const onEscKeyDown = (evt) => {
+    if (evt.code === 'Escape') {
+        closeArticleFormModal()
+    }
+}
+
+const setCreateArticleBtnClick = () => {
+    articleFormOpenElement.addEventListener('click', openArticleFormModal);
+}
+
+
+
+/***/ }),
+
 /***/ "./src/article-list.js":
 /*!*****************************!*\
   !*** ./src/article-list.js ***!
@@ -34,7 +109,7 @@ const renderPhotoList = (photos, container) => {
 const renderArticleList = (articles, container) => {
     for (const article of articles) {
         const articleElement = articleTemplateElement.cloneNode(true);
-        const photoListElement = articleElement.querySelector('.photo-list');
+        const photoListElement= articleElement.querySelector('.photo-list');
 
         articleElement.dataset.id = article.id;
         articleElement.querySelector('.title').textContent = article.title;
@@ -337,19 +412,22 @@ var __webpack_exports__ = {};
   !*** ./src/main.js ***!
   \*********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data */ "./src/data.js");
-/* harmony import */ var _article_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./article-list */ "./src/article-list.js");
-/* harmony import */ var _article_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./article-modal */ "./src/article-modal.js");
+/* harmony import */ var _data_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data.js */ "./src/data.js");
+/* harmony import */ var _article_list_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./article-list.js */ "./src/article-list.js");
+/* harmony import */ var _article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./article-form-modal.js */ "./src/article-form-modal.js");
+/* harmony import */ var _article_form_content__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./article-form-content */ "./src/article-form-content.js");
+
 
 
 
 
 const articleListElement = document.getElementById('app');
-// const ARTICLE_COUNT = 5;
-const ARTICLE_COUNT = 10;
+const ARTICLE_COUNT = 32;
 
-const articles = (0,_data__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTICLE_COUNT);
-(0,_article_list__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
+const articles = (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTICLE_COUNT);
+(0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
+(0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
+(0,_article_form_content__WEBPACK_IMPORTED_MODULE_3__.addPostFile)();
 
 })();
 

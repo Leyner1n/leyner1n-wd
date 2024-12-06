@@ -1,3 +1,12 @@
+:root {
+    --scrollbar-width: 9px;
+}
+
+* {
+    /*border: 1px solid;*/
+    /*box-sizing: border-box;*/
+}
+
 body {
     height: 100vh;
     /*border: 1px solid;*/
@@ -28,7 +37,7 @@ li {
 }
 
 ::-webkit-scrollbar {
-    width: 9px;
+    width: var(--scrollbar-width);
 }
 
 ::-webkit-scrollbar-track {

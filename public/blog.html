@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/blog-main.css">
     <link rel="stylesheet" href="./css/template-card.css">
     <link rel="stylesheet" href="./css/article-madal.css">
+    <link rel="stylesheet" href="./css/article-form-madal.css">
 
     <title>Webdot | Blog</title>
 </head>
@@ -29,7 +30,7 @@
                         <a class="nav-home">Home</a>
                     </li>
                     <li>
-                        <a class="nav-create">Create</a>
+                        <a id="create-card" class="nav-create">Create</a>
                     </li>
                 </ul>
 
@@ -45,13 +46,11 @@
                             <img class="avatar" src="./img/avatar/5.jpg" width="70" alt="">
                         </a>
                     </li>
-
                 </ul>
 
             </nav>
         </div>
     </header>
-
 
     <main class="main">
         <div class="search">
@@ -72,6 +71,50 @@
         </div>
         <div id="app"></div>
     </main>
+
+    <div id="article-form-modal">
+        <div class="modal-body">
+            <div class="escape-create-modal">
+                <h1>Create post</h1>
+                <div id="close-btn">&#10006</div>
+            </div>
+            <hr>
+            <div class="post-info">
+                <div class="add-post-file">
+                    <input type="file" id="upload-file" hidden="hidden">
+                    <button id="upload-btn">
+                        <!--<img src="img/photo/plus.png" alt="">-->
+                        <div>add your file</div>
+                    </button>
+                </div>
+                <div class="write-post-info">
+                    <form>
+                        <div class="type-form">Project name</div>
+                        <input class="form-input" type="text" placeholder="add a project name">
+                    </form>
+                    <form>
+                        <div class="type-form">Short description</div>
+                        <input class="form-input" type="text" placeholder="add short description">
+                    </form>
+                    <form>
+                        <div class="type-form">Description</div>
+                        <input class="form-input" type="text" placeholder="add description">
+                    </form>
+                    <form>
+                        <div class="type-form">Link to your website</div>
+                        <input class="form-input" type="text" placeholder="add link">
+                    </form>
+                    <form>
+                        <div class="type-form">Link to the project repository</div>
+                        <input class="form-input" type="text" placeholder="add link">
+                    </form>
+                </div>
+            </div>
+            <div class="add-post-btn">
+                <button>Add Post</button>
+            </div>
+        </div>
+    </div>
 
     <div id="article-modal">
         <div class="modal-body">
