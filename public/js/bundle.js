@@ -2,6 +2,32 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/article-form-content.js":
+/*!*************************************!*\
+  !*** ./src/article-form-content.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   addPostFile: () => (/* binding */ addPostFile)
+/* harmony export */ });
+const uploadFile = document.getElementById('upload-file');
+const uploadBtn = document.getElementById('upload-btn');
+
+const openConductor = () => {
+    uploadFile.click();
+}
+
+const addPostFile = () => {
+    uploadBtn.addEventListener('click', openConductor);
+}
+
+
+
+
+/***/ }),
+
 /***/ "./src/article-form-modal.js":
 /*!***********************************!*\
   !*** ./src/article-form-modal.js ***!
@@ -12,24 +38,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   setCreateArticleBtnClick: () => (/* binding */ setCreateArticleBtnClick)
 /* harmony export */ });
-/* harmony import */ var _article_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./article-modal */ "./src/article-modal.js");
-
-
 const articleFormModal = document.getElementById('article-form-modal');
 const articleFormOpenElement = document.getElementById('create-card');
-
-// articleFormOpenElement.addEventListener('click', function () {
-//     articleFormModal.classList.add('open');
-//     document.body.classList.add('modal-open');
-// })
-
+const articleFormCloseBtn = document.getElementById('close-btn');
 
 const openArticleFormModal = () => {
-    console.log(1);
     articleFormModal.classList.add('open');
     document.body.classList.add('modal-open');
 
-    articleFormModal.addEventListener('click', onOverlayClick);
+    articleFormCloseBtn.addEventListener('click', onCloseBtnClick)
     document.addEventListener('keydown', onEscKeyDown);
 }
 
@@ -37,14 +54,13 @@ const closeArticleFormModal = () => {
     articleFormModal.classList.remove('open');
     document.body.classList.remove('modal-open');
 
-    articleFormOpenElement.removeEventListener('click', onOverlayClick);
+
     document.removeEventListener('keydown', onEscKeyDown);
 }
 
-const onOverlayClick = (evt) => {
-    if (!evt.target.matches('.modal-body')) {
-        closeArticleFormModal()
-    }
+const onCloseBtnClick = () => {
+    articleFormModal.classList.remove('open');
+    document.body.classList.remove('modal-open');
 }
 
 const onEscKeyDown = (evt) => {
@@ -392,16 +408,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data.js */ "./src/data.js");
 /* harmony import */ var _article_list_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./article-list.js */ "./src/article-list.js");
 /* harmony import */ var _article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./article-form-modal.js */ "./src/article-form-modal.js");
+/* harmony import */ var _article_form_content__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./article-form-content */ "./src/article-form-content.js");
+
 
 
 
 
 const articleListElement = document.getElementById('app');
-const ARTICLE_COUNT = 10;
+const ARTICLE_COUNT = 32;
 
 const articles = (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTICLE_COUNT);
 (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
 (0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
+(0,_article_form_content__WEBPACK_IMPORTED_MODULE_3__.addPostFile)();
 
 })();
 

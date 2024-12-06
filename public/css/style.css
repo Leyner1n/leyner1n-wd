@@ -2,6 +2,11 @@
     --scrollbar-width: 9px;
 }
 
+* {
+    /*border: 1px solid;*/
+    /*box-sizing: border-box;*/
+}
+
 body {
     height: 100vh;
     /*border: 1px solid;*/
