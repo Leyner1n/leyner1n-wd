@@ -4,8 +4,7 @@ const articleTemplate = document.getElementById('article');
 const articleTemplateContent = articleTemplate.content;
 const articleTemplateElement = articleTemplateContent.querySelector('div');
 
-
-const  renderPhotoList = (photos, container) => {
+const renderPhotoList = (photos, container) => {
     for (const photo of photos) {
         const html = `
             <li class="photo-item">
@@ -16,11 +15,12 @@ const  renderPhotoList = (photos, container) => {
     }
 }
 
-const  renderArticleList = (articles, container) => {
+const renderArticleList = (articles, container) => {
     for (const article of articles) {
         const articleElement = articleTemplateElement.cloneNode(true);
         const photoListElement= articleElement.querySelector('.photo-list');
 
+        articleElement.dataset.id = article.id;
         articleElement.querySelector('.title').textContent = article.title;
         articleElement.querySelector('.content').textContent = article.content;
         articleElement.querySelector('.created-at').textContent = article.created_at;
@@ -28,16 +28,23 @@ const  renderArticleList = (articles, container) => {
         articleElement.querySelector('.avatar').src = 'img/avatar/' + article.user.avatar_path;
         renderPhotoList(article.photos, photoListElement);
 
-        articleElement.addEventListener('click', function () {
-            openArticleModal(article)
-        });
-
         container.append(articleElement);
     }
+
+    container.addEventListener('click', function (evt) {
+        const articleElement = evt.target.closest('.article');
+        const isUser = evt.target.closest('.user');
+        if (articleElement && !isUser) {
+            const articleId = Number(articleElement.dataset.id);
+            const article = articles.find(function (article) {
+                return article.id === articleId;
+            });
+            openArticleModal(article);
+        }
+    });
 }
 
 export {
     renderArticleList,
     renderPhotoList
 }
-
