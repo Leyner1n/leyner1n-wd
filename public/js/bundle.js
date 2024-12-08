@@ -36,11 +36,16 @@ const addPostFile = () => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   setCreateArticleBtnClick: () => (/* binding */ setCreateArticleBtnClick)
+/* harmony export */   setCreateArticleBtnClick: () => (/* binding */ setCreateArticleBtnClick),
+/* harmony export */   urlValidation: () => (/* binding */ urlValidation)
 /* harmony export */ });
 const articleFormModal = document.getElementById('article-form-modal');
 const articleFormOpenElement = document.getElementById('create-card');
 const articleFormCloseBtn = document.getElementById('close-btn');
+
+const repositoryUrlElement = document.getElementById('repository-url');
+const hostUrlElement = document.getElementById('host-url');
+const addPostBtn = document.getElementById('add-post-btn');
 
 const openArticleFormModal = () => {
     articleFormModal.classList.add('open');
@@ -53,7 +58,6 @@ const openArticleFormModal = () => {
 const closeArticleFormModal = () => {
     articleFormModal.classList.remove('open');
     document.body.classList.remove('modal-open');
-
 
     document.removeEventListener('keydown', onEscKeyDown);
 }
@@ -72,6 +76,24 @@ const onEscKeyDown = (evt) => {
 const setCreateArticleBtnClick = () => {
     articleFormOpenElement.addEventListener('click', openArticleFormModal);
 }
+
+const urlValidation = () => {
+    repositoryUrlElement.addEventListener('input', checkUrl);
+    hostUrlElement.addEventListener('input', checkUrl);
+}
+
+const checkUrl = (evt) => {
+    let urlError = 'rgb(45, 45, 45)'
+    let createPostTheme = 'rgb(8, 101, 41)'
+
+    if (evt.target.validity.typeMismatch) {
+        urlError = createPostTheme = '#5e1e1e'
+    }
+
+    addPostBtn.setAttribute('style', 'background-color: ' + createPostTheme);
+    evt.target.setAttribute('style', 'background-color: ' + urlError);
+}
+
 
 
 
@@ -421,6 +443,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const articleListElement = document.getElementById('app');
 const ARTICLE_COUNT = 32;
 
@@ -428,6 +451,7 @@ const articles = (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTI
 (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
 (0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
 (0,_article_form_content__WEBPACK_IMPORTED_MODULE_3__.addPostFile)();
+(0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.urlValidation)();
 
 })();
 
