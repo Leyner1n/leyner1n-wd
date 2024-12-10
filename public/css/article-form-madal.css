@@ -46,26 +46,36 @@
 }
 
 #article-form-modal .modal-body h1 {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 hr {
     border: none;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.7);
-    height: 3px;
+    background-color: rgba(255, 255, 255, 0.65);
+    height: 5px;
 }
 
 #article-form-modal .modal-body .write-post-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 380px;
     height: 550px;
 }
 
 #article-form-modal .modal-body .write-post-info  form {
-    margin-bottom: 45px;
+    display: flex;
+    flex-direction: column;
+}
+
+#article-form-modal .modal-body .write-post-info  form label {
+    align-self: end;
 }
 
 .write-post-info  form .type-form {
+    font-size: 16px;
+    font-weight: bold;
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 8px;
 }
@@ -74,16 +84,32 @@ hr {
     width: 100%;
     background-color: rgb(45, 45, 45);
     color: rgb(255, 245, 230);
+    font-size: 14px;
+    font-weight: lighter;
     border: none;
     padding: 15px;
     border-radius: 15px;
     outline: none;
     transition: .5s;
+    margin-bottom: 6px;
 }
 
 .write-post-info  form .form-input:hover {
     background-color: rgb(60, 60, 60);
 }
+
+.write-post-info .input-rules {
+    font-size: 12px;
+    font-weight: bolder;
+    color: rgba(131, 131, 131, 0.6);
+    /*color: rgb(32, 32, 32);*/
+    transition: .5s;
+}
+
+/*.write-post-info .input-rules.active {*/
+/*    color: rgba(131, 131, 131, 0.6);*/
+/*}*/
+
 
 #article-form-modal .modal-body #upload-btn {
     display: flex;
@@ -120,7 +146,7 @@ hr {
     border: 3px solid rgba(255, 255, 255, 0.6);
     border-radius: 7px;
     color: rgba(255, 255, 255, 0.8);
-    background-color: rgb(8, 101, 41);
+    background-color: rgba(30, 214, 97, 0.7);
     transition: .3s;
 }
 

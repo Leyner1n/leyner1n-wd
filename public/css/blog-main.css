@@ -50,7 +50,6 @@
 
 .main .search form input:hover {
     background-color: rgb(54, 54, 54);
-    width: 100%;
 }
 
 .main .search .sort-list li a:hover {
