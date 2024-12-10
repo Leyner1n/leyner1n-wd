@@ -36,16 +36,11 @@ const addPostFile = () => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   setCreateArticleBtnClick: () => (/* binding */ setCreateArticleBtnClick),
-/* harmony export */   urlValidation: () => (/* binding */ urlValidation)
+/* harmony export */   setCreateArticleBtnClick: () => (/* binding */ setCreateArticleBtnClick)
 /* harmony export */ });
 const articleFormModal = document.getElementById('article-form-modal');
 const articleFormOpenElement = document.getElementById('create-card');
 const articleFormCloseBtn = document.getElementById('close-btn');
-
-const repositoryUrlElement = document.getElementById('repository-url');
-const hostUrlElement = document.getElementById('host-url');
-const addPostBtn = document.getElementById('add-post-btn');
 
 const openArticleFormModal = () => {
     articleFormModal.classList.add('open');
@@ -77,23 +72,123 @@ const setCreateArticleBtnClick = () => {
     articleFormOpenElement.addEventListener('click', openArticleFormModal);
 }
 
-const urlValidation = () => {
+
+
+
+
+/***/ }),
+
+/***/ "./src/article-form-validation.js":
+/*!****************************************!*\
+  !*** ./src/article-form-validation.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   executeValidation: () => (/* binding */ executeValidation)
+/* harmony export */ });
+const addPostBtn = document.getElementById('add-post-btn');
+const projectNameElement = document.getElementById('project-name-txt');
+const shortDescriptionElement = document.getElementById('short-description-txt');
+const descriptionElement = document.getElementById('description-txt');
+const repositoryUrlElement = document.getElementById('repository-url');
+const hostUrlElement = document.getElementById('host-url');
+
+const PROJECT_NAME_LIMITATION = [2, 30];
+const SHORT_DESCRIPTION_LIMITATION = [10, 40];
+const DESCRIPTION_LIMITATION = [20, 250];
+
+const executeValidation = () => {
     repositoryUrlElement.addEventListener('input', checkUrl);
     hostUrlElement.addEventListener('input', checkUrl);
+    projectNameElement.addEventListener('input', checkProjectName);
+    shortDescriptionElement.addEventListener('input', checkshortDescriptionElement);
+    descriptionElement.addEventListener('input', checkDescriptionElement);
+    addPostBtn.addEventListener('click', validateBeforeClickBtn);
+}
+
+const checkProjectName = (evt) => {
+    let error = 'rgb(45, 45, 45)';
+
+    if (evt.target.value.length >  PROJECT_NAME_LIMITATION[1]) {
+        error = '#5e1e1e';
+    }
+
+    evt.target.setAttribute('style', 'background-color: ' + error);
+}
+
+const checkshortDescriptionElement = (evt) => {
+    let error = 'rgb(45, 45, 45)';
+
+    if (evt.target.value.length >  SHORT_DESCRIPTION_LIMITATION[1]) {
+        error = '#5e1e1e';
+    }
+
+    evt.target.setAttribute('style', 'background-color: ' + error);
+}
+
+const checkDescriptionElement = (evt)=> {
+    let error = 'rgb(45, 45, 45)';
+
+
+    if (evt.target.value.length >  DESCRIPTION_LIMITATION[1]) {
+        error = '#5e1e1e';
+    }
+
+    evt.target.setAttribute('style', 'background-color: ' + error);
 }
 
 const checkUrl = (evt) => {
-    let urlError = 'rgb(45, 45, 45)'
-    let createPostTheme = 'rgb(8, 101, 41)'
+    let error = 'rgb(45, 45, 45)';
 
     if (evt.target.validity.typeMismatch) {
-        urlError = createPostTheme = '#5e1e1e'
+        error = '#5e1e1e';
     }
 
-    addPostBtn.setAttribute('style', 'background-color: ' + createPostTheme);
-    evt.target.setAttribute('style', 'background-color: ' + urlError);
+    evt.target.setAttribute('style', 'background-color: ' + error);
 }
 
+const validateBeforeClickBtn = () => {
+    const formInformationArray = [
+        projectNameElement,
+        shortDescriptionElement,
+        descriptionElement
+    ];
+    let colorArray = [
+        'rgb(45, 45, 45)',
+        'rgb(45, 45, 45)',
+        'rgb(45, 45, 45)',
+        'rgb(45, 45, 45)',
+        'rgb(45, 45, 45)'
+    ];
+    let conditionArray = [
+        PROJECT_NAME_LIMITATION[0],
+        SHORT_DESCRIPTION_LIMITATION[0],
+        DESCRIPTION_LIMITATION[0]
+    ];
+
+    let counter = 0;
+    for (let info of formInformationArray) {
+        if (info.value.length < conditionArray[counter]) {
+            colorArray.splice(counter, 1, '#5e1e1e');
+        }
+        counter += 1
+    }
+
+    if (hostUrlElement.value.length === 0) {
+        colorArray.splice(3, 1, '#5e1e1e');
+    }
+    if (repositoryUrlElement.value.length === 0) {
+        colorArray.splice(4, 1, '#5e1e1e');
+    }
+
+    projectNameElement.setAttribute('style', 'background-color: ' + colorArray[0]);
+    shortDescriptionElement.setAttribute('style', 'background-color: ' + colorArray[1]);
+    descriptionElement.setAttribute('style', 'background-color: ' + colorArray[2]);
+    hostUrlElement.setAttribute('style', 'background-color: ' + colorArray[3]);
+    repositoryUrlElement.setAttribute('style', 'background-color: ' + colorArray[4]);
+}
 
 
 
@@ -431,6 +526,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _article_list_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./article-list.js */ "./src/article-list.js");
 /* harmony import */ var _article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./article-form-modal.js */ "./src/article-form-modal.js");
 /* harmony import */ var _article_form_content__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./article-form-content */ "./src/article-form-content.js");
+/* harmony import */ var _article_form_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./article-form-validation */ "./src/article-form-validation.js");
 
 
 
@@ -444,7 +540,7 @@ const articles = (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTI
 (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
 (0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
 (0,_article_form_content__WEBPACK_IMPORTED_MODULE_3__.addPostFile)();
-(0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.urlValidation)();
+(0,_article_form_validation__WEBPACK_IMPORTED_MODULE_4__.executeValidation)();
 
 })();
 
