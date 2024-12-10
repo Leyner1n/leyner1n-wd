@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- add-form-validation [WEB12](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-12)
 - add-create-modal [WEB-11](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-11)
 - add-tor-and-delegation-form [WEB-9](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-9)
 - add-delegation-render-article-list [WEB-8](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-8)
