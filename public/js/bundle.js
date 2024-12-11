@@ -2,6 +2,116 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/animations/aside-animations.js":
+/*!********************************************!*\
+  !*** ./src/animations/aside-animations.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setAsideNavList: () => (/* binding */ setAsideNavList)
+/* harmony export */ });
+const homeBtn = document.getElementById('home-btn');
+const createBtn = document.getElementById('create-card');
+const notifnotificationsBtn = document.getElementById('notifications-btn');
+const messageBtn = document.getElementById('message-btn');
+const articleFormCloseBtn = document.getElementById('close-btn');
+
+const btnsArray = [
+    homeBtn,
+    createBtn,
+    notifnotificationsBtn,
+    messageBtn,
+    articleFormCloseBtn
+]
+
+const openNavList = (evt) => {
+    for (let btn of btnsArray) {
+        btn.classList.remove('open');
+    }
+    if (evt.target === articleFormCloseBtn) {
+        homeBtn.classList.add('open');
+    } else {
+        evt.target.classList.add('open');
+    }
+}
+
+const setAsideNavList = () => {
+    for (let btn of btnsArray) {
+        btn.addEventListener('click', openNavList);
+    }
+
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/animations/header-animations.js":
+/*!*********************************************!*\
+  !*** ./src/animations/header-animations.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setFormSearchElement: () => (/* binding */ setFormSearchElement),
+/* harmony export */   setSortList: () => (/* binding */ setSortList)
+/* harmony export */ });
+const formSearchElement = document.getElementById('header-search');
+const filterAll = document.getElementById('header-list-all');
+const filterPopular = document.getElementById('header-list-popular');
+const filterNew = document.getElementById('header-list-new');
+
+const filterList = [
+    filterAll,
+    filterPopular,
+    filterNew
+]
+
+const showChoice = () => {
+    formSearchElement.classList.add('open');
+
+    document.addEventListener('click', onOverlayClick);
+}
+
+const hideChoice = () => {
+    formSearchElement.classList.remove('open');
+
+    formSearchElement.removeEventListener('click', onOverlayClick);
+}
+
+const onOverlayClick = (evt) => {
+    if (!evt.target.matches('.header-search')) {
+        hideChoice()
+    }
+}
+
+const setFormSearchElement = () => {
+    formSearchElement.addEventListener('click', showChoice)
+}
+
+const openFilter = (evt) => {
+    for (let filter of filterList) {
+        filter.classList.remove('open');
+    }
+
+    evt.target.classList.add('open');
+}
+
+const setSortList = () => {
+    for (let filter of filterList) {
+        filter.addEventListener('click', openFilter);
+    }
+}
+
+
+
+
+/***/ }),
+
 /***/ "./src/article-form-content.js":
 /*!*************************************!*\
   !*** ./src/article-form-content.js ***!
@@ -42,10 +152,24 @@ const articleFormModal = document.getElementById('article-form-modal');
 const articleFormOpenElement = document.getElementById('create-card');
 const articleFormCloseBtn = document.getElementById('close-btn');
 
+
+const homeBtn = document.getElementById('home-btn');
+const createBtn = document.getElementById('create-card');
+const notifnotificationsBtn = document.getElementById('notifications-btn');
+const messageBtn = document.getElementById('message-btn');
+
+const btnsArray = [
+    homeBtn,
+    createBtn,
+    notifnotificationsBtn,
+    messageBtn
+]
+
 const openArticleFormModal = () => {
     articleFormModal.classList.add('open');
     document.body.classList.add('modal-open');
 
+    homeBtn.addEventListener('click', onCloseBtnClick)
     articleFormCloseBtn.addEventListener('click', onCloseBtnClick)
     document.addEventListener('keydown', onEscKeyDown);
 }
@@ -535,6 +659,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./article-form-modal.js */ "./src/article-form-modal.js");
 /* harmony import */ var _article_form_content__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./article-form-content */ "./src/article-form-content.js");
 /* harmony import */ var _article_form_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./article-form-validation */ "./src/article-form-validation.js");
+/* harmony import */ var _animations_header_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./animations/header-animations */ "./src/animations/header-animations.js");
+/* harmony import */ var _animations_aside_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./animations/aside-animations */ "./src/animations/aside-animations.js");
+
+
+
 
 
 
@@ -549,6 +678,9 @@ const articles = (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTI
 (0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
 (0,_article_form_content__WEBPACK_IMPORTED_MODULE_3__.addPostFile)();
 (0,_article_form_validation__WEBPACK_IMPORTED_MODULE_4__.executeValidation)();
+(0,_animations_header_animations__WEBPACK_IMPORTED_MODULE_5__.setFormSearchElement)();
+(0,_animations_header_animations__WEBPACK_IMPORTED_MODULE_5__.setSortList)();
+(0,_animations_aside_animations__WEBPACK_IMPORTED_MODULE_6__.setAsideNavList)();
 
 })();
 
