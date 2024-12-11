@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/blog-header.css">
+    <link rel="stylesheet" href="css/blog-aside.css">
     <link rel="stylesheet" href="./css/blog-main.css">
     <link rel="stylesheet" href="./css/template-card.css">
     <link rel="stylesheet" href="./css/article-madal.css">
@@ -16,11 +17,32 @@
 <body>
 
     <header>
-        <div class="header-container">
+        <div class="container">
+            <div class="search">
+                <form>
+                    <input type="text" placeholder="Search for...">
+                </form>
+                <ul class="sort-list">
+                    <li>
+                        <a>All</a>
+                    </li>
+                    <li>
+                        <a>Most popular</a>
+                    </li>
+                    <li>
+                        <a>New</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <aside>
+        <div class="aside-container">
 
             <nav>
 
-                <ul class="header-nav-list">
+                <ul class="aside-nav-list">
                     <li>
                         <a href="#">
                             <h1 class="logo">Web/Dot</h1>
@@ -50,26 +72,28 @@
 
             </nav>
         </div>
-    </header>
+    </aside>
 
     <main class="main">
-        <div class="search">
-            <form>
-                <input type="text" placeholder="Search for...">
-            </form>
-            <ul class="sort-list">
-                <li>
-                    <a>All</a>
-                </li>
-                <li>
-                    <a>Most popular</a>
-                </li>
-                <li>
-                    <a>New</a>
-                </li>
-            </ul>
+        <div class="container">
+            <div id="app"></div>
+
+            <template id="article">
+                <div class="article">
+                    <div class="user">
+                        <img class="avatar" src="" width="50" alt="">
+                        <a class="username">placeholder</a>
+                        <time class="created-at" datetime="">01.01.2024</time>
+                    </div>
+
+                    <h3 class="title">placeholder</h3>
+                    <p class="content">placeholder</p>
+
+                    <ul class="photo-list">
+                    </ul>
+                </div>
+            </template>
         </div>
-        <div id="app"></div>
     </main>
 
     <div id="article-form-modal">
@@ -83,7 +107,6 @@
                 <div class="add-post-file">
                     <input type="file" id="upload-file" hidden="hidden">
                     <button id="upload-btn">
-                        <!--<img src="img/photo/plus.png" alt="">-->
                         <div>placeholder</div>
                     </button>
                 </div>
@@ -136,21 +159,11 @@
         </div>
     </div>
 
-    <template id="article">
-        <div class="article">
-            <div class="user">
-                <img class="avatar" src="" width="50" alt="">
-                <a class="username">placeholder</a>
-                <time class="created-at" datetime="">01.01.2024</time>
-            </div>
-
-            <h3 class="title">placeholder</h3>
-            <p class="content">placeholder</p>
-
-            <ul class="photo-list">
-            </ul>
+    <footer>
+        <div class="footer-container">
+            <div>placeholder</div>
         </div>
-    </template>
+    </footer>
 
     <script src="./js/bundle.js"></script>
 </body>

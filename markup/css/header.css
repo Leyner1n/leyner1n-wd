@@ -22,7 +22,7 @@ nav .logo {
     transition: all ease 0.2s;
 }
 
-.header-nav-list {    
+.aside-nav-list {
     display: flex;
     position: relative;
     font-weight: 700;
@@ -33,7 +33,7 @@ nav .logo {
     display: flex;
 }
 
-.header-nav-list li:not(:first-child),
+.aside-nav-list li:not(:first-child),
 .client-nav-list li:not(:first-child) {
     margin-left: 50px;
 }
@@ -79,12 +79,12 @@ nav .logo:hover {
 }
 
 nav .header-nav-list-about a:hover,
-nav .header-nav-list a:hover {
+nav .aside-nav-list a:hover {
     transition: all ease 0.25s;
 }
 
 nav .header-nav-list-about a:hover,
-nav .header-nav-list a:hover {
+nav .aside-nav-list a:hover {
     color: rgb(30, 214, 97);
     border-bottom: 3px solid rgb(30, 214, 97);
     padding-bottom: 15px;

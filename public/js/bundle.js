@@ -192,6 +192,7 @@ const validateBeforeClickBtn = () => {
 
 
 
+
 /***/ }),
 
 /***/ "./src/article-list.js":
