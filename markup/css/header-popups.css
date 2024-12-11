@@ -1,4 +1,4 @@
-.header-nav-list #service-popup {
+.aside-nav-list #service-popup {
     display: none;
     position: fixed;
     top: 0;
@@ -13,11 +13,11 @@
     opacity: 1;
 }
 
-.header-nav-list #service-popup.animation {
+.aside-nav-list #service-popup.animation {
     opacity: 1;
 }
 
-.header-nav-list #industries-popup {
+.aside-nav-list #industries-popup {
     display: none;
     position: fixed;
     top: 0;
@@ -32,11 +32,11 @@
     z-index: -1;
 }
 
-.header-nav-list #industries-popup.animation {
+.aside-nav-list #industries-popup.animation {
     opacity: 1;
 }  
 
-.header-nav-list #companies-popup {
+.aside-nav-list #companies-popup {
     display: none;
     position: fixed;
     top: 0;
@@ -51,7 +51,7 @@
     z-index: -1;
 }
 
-.header-nav-list #companies-popup.animation {
+.aside-nav-list #companies-popup.animation {
     opacity: 1;
 }
 

@@ -1,0 +1,83 @@
+nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 150px;
+    text-align: center;
+    transition: all ease .4s;
+}
+
+.aside-nav-list li:not(:nth-child(1)) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(30, 214, 97, 0);
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.aside-nav-list li:not(:nth-child(1)) a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    width: 80px;
+    height: 40px;
+    transition: all ease .3s;
+}
+
+nav .aside-nav-list .nav-home {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+nav .aside-nav-list .nav-create {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.nav-user-list li {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.nav-user-list li:not(:nth-child(3)) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: rgba(30, 214, 97, 0);
+    margin-bottom: 40px;
+    transition: all ease .3s;
+}
+
+nav .nav-user-list .notifications {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+nav .nav-user-list .message {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+nav .logo {
+    color: rgb(30, 214, 97);
+    font-weight: 800;
+    font-size: larger;
+}
+
+.aside-nav-list li:not(:nth-child(1)):hover a {
+    background-color: rgba(30, 214, 97, 1);
+}
+
+.nav-user-list li:not(:nth-child(3)):hover {
+    background-color: rgba(30, 214, 97, 1);
+}

@@ -1,83 +1,62 @@
-nav {
+.search {
     display: flex;
     position: fixed;
+    height: 150px;
+    width: 100%;
     top: 0;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    width: 150px;
-    text-align: center;
-    transition: all ease .4s;
-}
-
-.header-nav-list li:not(:nth-child(1)) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(30, 214, 97, 0);
-    margin-top: 40px;
-    cursor: pointer;
-}
-
-.header-nav-list li:not(:nth-child(1)) a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    width: 80px;
-    height: 40px;
+    margin-left: 205px;
+    background-color: rgba(19, 19, 19, 0.8);
     transition: all ease .3s;
 }
 
-nav .header-nav-list .nav-home {
-    font-weight: bolder;
-    font-size: 20px;
-}
-
-nav .header-nav-list .nav-create {
-    font-weight: bolder;
-    font-size: 20px;
-}
-
-.nav-user-list li {
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.nav-user-list li:not(:nth-child(3)) {
-    display: flex;
+.search form {
     align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 40px;
-    border-radius: 30px;
-    background-color: rgba(30, 214, 97, 0);
-    margin-bottom: 40px;
+}
+
+.search form input {
+    width: 56%;
+    height: 20px;
+    background-color: rgb(45, 45, 45);
+    color: rgb(255, 245, 230);
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    outline: none;
+    font-size: larger;
+    margin-top: 20px;
+    margin-bottom: 15px;
     transition: all ease .3s;
 }
 
-nav .nav-user-list .notifications {
-    font-weight: bolder;
-    font-size: 20px;
+.search form input:hover {
+    width: 86%;
 }
 
-nav .nav-user-list .message {
-    font-weight: bolder;
-    font-size: 20px;
-}
-
-nav .logo {
-    color: rgb(30, 214, 97);
+.search .sort-list {
+    display: flex;
+    color: rgb(255, 245, 230);
     font-weight: 800;
     font-size: larger;
+    transition: all ease .1s;
 }
 
-.header-nav-list li:not(:nth-child(1)):hover a {
-    background-color: rgba(30, 214, 97, 1);
+.search .sort-list li a {
+    margin-right: 60px;
+    transition: all ease .1s;
+    cursor: pointer;
 }
 
-.nav-user-list li:not(:nth-child(3)):hover {
-    background-color: rgba(30, 214, 97, 1);
+.search:hover {
+    background-color: rgba(19, 19, 19, 1);
+}
+
+.search form input:hover {
+    background-color: rgb(54, 54, 54);
+}
+
+.search .sort-list li a:hover {
+    color: rgb(30, 214, 97);
+    border-bottom: 3px solid rgb(30, 214, 97);
+    padding-bottom: 10px;
 }
