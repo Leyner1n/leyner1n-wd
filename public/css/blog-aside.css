@@ -1,3 +1,7 @@
+.aside-container {
+    user-select: none;
+}
+
 nav {
     display: flex;
     position: fixed;
@@ -74,10 +78,16 @@ nav .logo {
     font-size: larger;
 }
 
-.aside-nav-list li:not(:nth-child(1)):hover a {
-    background-color: rgba(30, 214, 97, 1);
+.aside-nav-list li:not(:nth-child(1)) a.open {
+    background-color: rgb(23, 166, 75);
 }
 
-.nav-user-list li:not(:nth-child(3)):hover {
-    background-color: rgba(30, 214, 97, 1);
+.nav-user-list li:not(:nth-child(3)) a.open{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(23, 166, 75);
+    width: 150px;
+    height: 40px;
+    border-radius: 30px;
 }

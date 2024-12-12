@@ -1,3 +1,7 @@
+.container {
+    user-select: none;
+}
+
 .search {
     display: flex;
     position: fixed;
@@ -29,7 +33,7 @@
     transition: all ease .3s;
 }
 
-.search form input:hover {
+.search form input.open {
     width: 86%;
 }
 
@@ -43,6 +47,7 @@
 
 .search .sort-list li a {
     margin-right: 60px;
+    border-bottom: 0 solid rgb(30, 214, 97);
     transition: all ease .1s;
     cursor: pointer;
 }
@@ -55,7 +60,7 @@
     background-color: rgb(54, 54, 54);
 }
 
-.search .sort-list li a:hover {
+.search .sort-list li a.open {
     color: rgb(30, 214, 97);
     border-bottom: 3px solid rgb(30, 214, 97);
     padding-bottom: 10px;
