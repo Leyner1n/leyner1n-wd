@@ -112,32 +112,6 @@ const setSortList = () => {
 
 /***/ }),
 
-/***/ "./src/article-form-content.js":
-/*!*************************************!*\
-  !*** ./src/article-form-content.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   addPostFile: () => (/* binding */ addPostFile)
-/* harmony export */ });
-const uploadFile = document.getElementById('upload-file');
-const uploadBtn = document.getElementById('upload-btn');
-
-const openConductor = () => {
-    uploadFile.click();
-}
-
-const addPostFile = () => {
-    uploadBtn.addEventListener('click', openConductor);
-}
-
-
-
-
-/***/ }),
-
 /***/ "./src/article-form-modal.js":
 /*!***********************************!*\
   !*** ./src/article-form-modal.js ***!
@@ -349,6 +323,8 @@ const renderPhotoList = (photos, container) => {
 }
 
 const renderArticleList = (articles, container) => {
+    container.innerHTML = '';
+
     for (const article of articles) {
         const articleElement = articleTemplateElement.cloneNode(true);
         const photoListElement= articleElement.querySelector('.photo-list');
@@ -456,23 +432,47 @@ const onEscKeyDown = (evt) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ARTICLE_CONTENTS: () => (/* binding */ ARTICLE_CONTENTS),
+/* harmony export */   ARTICLE_DATES: () => (/* binding */ ARTICLE_DATES),
 /* harmony export */   ARTICLE_PHOTOS: () => (/* binding */ ARTICLE_PHOTOS),
 /* harmony export */   ARTICLE_TITLES: () => (/* binding */ ARTICLE_TITLES)
 /* harmony export */ });
 const ARTICLE_CONTENTS = [
-    'dima',
-    'death',
-    'sergey',
-    'mickael',
-    'solid'
+    'The invisible cat played chess with a talking tree',
+    'Flying bicycles zoomed past the sleepy purple giraffe',
+    'Marshmallow clouds floated above the chocolate river valley',
+    'Time-traveling penguins discovered a hidden treasure in Atlantis',
+    'The clock ticked backward while frogs wore tiny hats',
+    'Dancing robots painted the walls with colorful spaghetti sauce',
+    'A magical unicorn juggled oranges under the starry sky'
 ];
 
+const ARTICLE_DATES = [
+    '2025-01-01',
+    '2025-01-7',
+    '2025-01-15',
+    '2024-12-30',
+    '2024-1-21',
+    '2024-06-26',
+    '2024-07-13',
+    '2024-07-16',
+    '2024-11-14'
+]
+
 const ARTICLE_TITLES = [
-    'first',
-    'second',
-    'third',
-    'fourd',
-    'fived'
+    'KoChu!',
+    'Furly',
+    'Galery',
+    'EcoWave',
+    'Quantum',
+    'Synergy Consulting Group',
+    'Crystal Clear',
+    'Webdot',
+    'Spectrum',
+    'Echo Innovations',
+    'Velocity',
+    'Bright Future',
+    'EcoSphere',
+    'Apex Innovations'
 ];
 
 const ARTICLE_PHOTOS = [
@@ -501,6 +501,7 @@ const ARTICLE_PHOTOS = [
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   generateArticle: () => (/* binding */ generateArticle),
 /* harmony export */   generateArticles: () => (/* binding */ generateArticles)
 /* harmony export */ });
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util */ "./src/util.js");
@@ -521,7 +522,7 @@ const generateUser = () => {
         password: '*****',
         avatar_path: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_AVATAR_COUNT) + '.jpg',
         locale: 'en',
-        created_at: '2024-01-01',
+        created_at: '2025-01-01',
     };
 };
 
@@ -543,7 +544,7 @@ const generateArticle = (maxArticleId) => {
         id: articleId,
         title: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_TITLES),
         content: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_CONTENTS),
-        created_at: '2024-01-01',
+        created_at: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_DATES),
         user: generateUser(),
         photos: photos
     };
@@ -558,6 +559,87 @@ const generateArticles = (count) => {
 
     return articles;
 };
+
+
+
+
+/***/ }),
+
+/***/ "./src/enum.js":
+/*!*********************!*\
+  !*** ./src/enum.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Filter: () => (/* binding */ Filter)
+/* harmony export */ });
+const Filter = {
+    ALL: 'all',
+    POPULAR: 'popular',
+    NEW: 'new'
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/filters.js":
+/*!************************!*\
+  !*** ./src/filters.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setFilterClickHandler: () => (/* binding */ setFilterClickHandler)
+/* harmony export */ });
+/* harmony import */ var _enum_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./enum.js */ "./src/enum.js");
+/* harmony import */ var _article_list_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./article-list.js */ "./src/article-list.js");
+
+
+
+const sortListElement = document.querySelector('.sort-list');
+const articleListElement = document.getElementById('app');
+
+const compareArticles = (articleA, articleB) => {
+    const dateA = new Date(articleA.created_at);
+    const dateB = new Date(articleB.created_at);
+
+    return dateB.getTime() - dateA.getTime();
+}
+
+// замыкание
+const getFilterClickHandler = (articles) => {
+    return (evt) => {
+        if (!evt.target.matches('a')) {
+            return;
+        }
+
+        const filter = evt.target.id.split('-')[2] ?? null;
+        if (!Object.values(_enum_js__WEBPACK_IMPORTED_MODULE_0__.Filter).includes(filter)) {
+            return;
+        }
+
+        switch (filter) {
+            case _enum_js__WEBPACK_IMPORTED_MODULE_0__.Filter.ALL:
+                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
+                break;
+            case _enum_js__WEBPACK_IMPORTED_MODULE_0__.Filter.POPULAR:
+                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
+                break;
+            case _enum_js__WEBPACK_IMPORTED_MODULE_0__.Filter.NEW:
+                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(compareArticles), articleListElement);
+                break;
+        }
+    };
+}
+
+const setFilterClickHandler = (articles) => {
+    sortListElement.addEventListener('click', getFilterClickHandler(articles));
+}
 
 
 
@@ -657,10 +739,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data.js */ "./src/data.js");
 /* harmony import */ var _article_list_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./article-list.js */ "./src/article-list.js");
 /* harmony import */ var _article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./article-form-modal.js */ "./src/article-form-modal.js");
-/* harmony import */ var _article_form_content__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./article-form-content */ "./src/article-form-content.js");
-/* harmony import */ var _article_form_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./article-form-validation */ "./src/article-form-validation.js");
-/* harmony import */ var _animations_header_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./animations/header-animations */ "./src/animations/header-animations.js");
-/* harmony import */ var _animations_aside_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./animations/aside-animations */ "./src/animations/aside-animations.js");
+/* harmony import */ var _article_form_validation_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./article-form-validation.js */ "./src/article-form-validation.js");
+/* harmony import */ var _animations_header_animations_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./animations/header-animations.js */ "./src/animations/header-animations.js");
+/* harmony import */ var _animations_aside_animations_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./animations/aside-animations.js */ "./src/animations/aside-animations.js");
+/* harmony import */ var _filters_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./filters.js */ "./src/filters.js");
 
 
 
@@ -671,16 +753,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const articleListElement = document.getElementById('app');
-const ARTICLE_COUNT = 32;
+const ARTICLE_COUNT = 10;
 
 const articles = (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTICLE_COUNT);
 (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
+(0,_filters_js__WEBPACK_IMPORTED_MODULE_6__.setFilterClickHandler)(articles);
+
 (0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
-(0,_article_form_content__WEBPACK_IMPORTED_MODULE_3__.addPostFile)();
-(0,_article_form_validation__WEBPACK_IMPORTED_MODULE_4__.executeValidation)();
-(0,_animations_header_animations__WEBPACK_IMPORTED_MODULE_5__.setFormSearchElement)();
-(0,_animations_header_animations__WEBPACK_IMPORTED_MODULE_5__.setSortList)();
-(0,_animations_aside_animations__WEBPACK_IMPORTED_MODULE_6__.setAsideNavList)();
+(0,_article_form_validation_js__WEBPACK_IMPORTED_MODULE_3__.executeValidation)();
+(0,_animations_header_animations_js__WEBPACK_IMPORTED_MODULE_4__.setFormSearchElement)();
+(0,_animations_header_animations_js__WEBPACK_IMPORTED_MODULE_4__.setSortList)();
+(0,_animations_aside_animations_js__WEBPACK_IMPORTED_MODULE_5__.setAsideNavList)();
 
 })();
 
