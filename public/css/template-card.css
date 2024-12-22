@@ -3,16 +3,17 @@
     justify-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
-    /*background-color: rgb(61, 59, 59);*/
-    margin: 175px 0 60px 175px;
+    /*background-color: rgb(52, 52, 52);*/
+    /*border-radius: 15px;*/
+    margin: 175px 0 160px 175px;
 }
 
 .article {
     display: flex;
     flex-direction: column;
-    padding: 15px 0 15px 15px;
-    height: 380px;
-    width: 500px;
+    padding: 15px 15px 0 15px;
+    height: 400px;
+    width: 520px;
     background-color: rgb(30, 30, 30);
     margin-top: 40px;
     border-radius: 8px;
@@ -53,10 +54,15 @@
     font-size: 35px;
 }
 
+.article .article-content {
+    width: 360px;
+}
+
 .article .content {
-    font-weight: bolder;
-    font-size: 15px;
-    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .photo-list {

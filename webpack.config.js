@@ -8,7 +8,11 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
-        hot: false,
+        hot: true,
         port: 8080
-    }
+    },
+    watch: true,
+    watchOptions: {
+        poll: 1000,
+    },
 };
