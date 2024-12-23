@@ -14,6 +14,7 @@ const openArticleModal = (article) => {
     articleModalAvatarElement.src = 'img/avatar/' + article.user.avatar_path;
     articleModalUsernameElement.textContent = article.user.name;
     articleModalCreatedAtElement.textContent = article.created_at;
+
     articleModalTitleElement.textContent = article.title;
     articleModalContentElement.textContent = article.content;
 

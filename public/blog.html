@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/template-card.css">
     <link rel="stylesheet" href="./css/article-madal.css">
     <link rel="stylesheet" href="./css/article-form-madal.css">
+    <link rel="stylesheet" href="./css/blog-icons.css">
 
     <title>Webdot | Blog</title>
 </head>
@@ -79,19 +80,29 @@
 
             <template id="article">
                 <div class="article">
-                    <div class="user">
-                        <img class="avatar" src="" width="50" alt="">
-                        <a class="username">placeholder</a>
-                        <time class="created-at" datetime="">01.01.2024</time>
+                    <div class="article-popularity">
+                        <div class="user">
+                            <img class="avatar" src="" width="50" alt="">
+                            <a class="username">placeholder</a>
+                            <time class="created-at" datetime="">01.01.2024</time>
+                        </div>
+                        <div class="article-popularity">
+                            <p class="likes pop">placeholder</p>
+                            <a href="#"><i class="fa-solid fa-heart fa-lg"></i></a>
+                            <p class="comments pop">placeholder</p>
+                            <i class="fa-solid fa-comment fa-lg"></i>
+                        </div>
                     </div>
 
-                        <h3 class="title">placeholder</h3>
-                    <div class="article-content">
-                        <p class="content">placeholder</p>
-                    </div>
+                    <h3 class="title">placeholder</h3>
 
-                    <ul class="photo-list">
-                    </ul>
+                    <div class="article-project-description">
+                        <div class="article-content">
+                            <p class="content">placeholder</p>
+                        </div>
+                        <ul class="photo-list">
+                        </ul>
+                    </div>
                 </div>
             </template>
         </div>
@@ -108,7 +119,7 @@
                 <div class="add-post-file">
                     <input type="file" id="upload-file" hidden="hidden">
                     <label id="upload-btn" for="upload-file">
-                        <span>placeholder</span>
+                        <span><i class="fa-solid fa-plus fa-2xl"></i></i></span>
                     </label>
                 </div>
                 <div class="write-post-info">
@@ -166,6 +177,7 @@
         </div>
     </footer>
 
+    <script src="https://kit.fontawesome.com/1c49f806bd.js" crossorigin="anonymous"></script>
     <script src="./js/bundle.js"></script>
 </body>
 </html>
