@@ -1,11 +1,11 @@
 const ARTICLE_CONTENTS = [
-    'The invisible cat played chess with a talking tree',
-    'Flying bicycles zoomed past the sleepy purple giraffe',
-    'Marshmallow clouds floated above the chocolate river valley',
-    'Time-traveling penguins discovered a hidden treasure in Atlantis',
-    'The clock ticked backward while frogs wore tiny hats',
-    'Dancing robots painted the walls with colorful spaghetti sauce',
-    'A magical unicorn juggled oranges under the starry sky'
+    'The invisible cat played chess with a talking tree flying bicycles zoomed pas trobots painted the walls with colorful',
+    'Flying bicycles zoomed past the sleepy purple giraffe flying bicycles zoomed past robots painted the walls with colorful',
+    'Marshmallow clouds floated above the chocolate river valley flying bicycles zoomed past robots painted the walls with colorful',
+    'Time-traveling penguins discovered a hidden treasure in Atlantis flying bicycles zoomed past robots painted the walls with colorful',
+    'The clock ticked backward while frogs wore tiny hats flying bicycles zoomed past robots painted the walls with colorful',
+    'Dancing robots painted the walls with colorful spaghetti sauce flying bicycles zoomed past robots painted the walls with colorful',
+    'A magical unicorn juggled oranges under the starry sky flying bicycles zoomed past robots painted the walls with colorful'
 ];
 
 const ARTICLE_DATES = [
@@ -13,17 +13,17 @@ const ARTICLE_DATES = [
     '2025-01-7',
     '2025-01-15',
     '2024-12-30',
-    '2024-1-21',
+    '2024-01-21',
     '2024-06-26',
     '2024-07-13',
     '2024-07-16',
     '2024-11-14'
-]
+];
 
 const ARTICLE_TITLES = [
     'KoChu!',
     'Furly',
-    'Galery',
+    'Gallery',
     'EcoWave',
     'Quantum',
     'Synergy Consulting Group',

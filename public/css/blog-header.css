@@ -19,7 +19,7 @@
 }
 
 .search form input {
-    width: 56%;
+    width: 58%;
     height: 20px;
     background-color: rgb(45, 45, 45);
     color: rgb(255, 245, 230);
@@ -34,7 +34,7 @@
 }
 
 .search form input.open {
-    width: 86%;
+    width: 74%;
 }
 
 .search .sort-list {

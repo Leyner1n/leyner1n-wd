@@ -333,6 +333,8 @@ const renderArticleList = (articles, container) => {
         articleElement.querySelector('.title').textContent = article.title;
         articleElement.querySelector('.content').textContent = article.content;
         articleElement.querySelector('.created-at').textContent = article.created_at;
+        articleElement.querySelector('.likes').textContent = article.likes;
+        articleElement.querySelector('.comments').textContent = article.comments;
         articleElement.querySelector('.username').textContent = article.user.name;
         articleElement.querySelector('.avatar').src = 'img/avatar/' + article.user.avatar_path;
         renderPhotoList(article.photos, photoListElement);
@@ -386,6 +388,7 @@ const openArticleModal = (article) => {
     articleModalAvatarElement.src = 'img/avatar/' + article.user.avatar_path;
     articleModalUsernameElement.textContent = article.user.name;
     articleModalCreatedAtElement.textContent = article.created_at;
+
     articleModalTitleElement.textContent = article.title;
     articleModalContentElement.textContent = article.content;
 
@@ -437,13 +440,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ARTICLE_TITLES: () => (/* binding */ ARTICLE_TITLES)
 /* harmony export */ });
 const ARTICLE_CONTENTS = [
-    'The invisible cat played chess with a talking tree',
-    'Flying bicycles zoomed past the sleepy purple giraffe',
-    'Marshmallow clouds floated above the chocolate river valley',
-    'Time-traveling penguins discovered a hidden treasure in Atlantis',
-    'The clock ticked backward while frogs wore tiny hats',
-    'Dancing robots painted the walls with colorful spaghetti sauce',
-    'A magical unicorn juggled oranges under the starry sky'
+    'The invisible cat played chess with a talking tree flying bicycles zoomed pas trobots painted the walls with colorful',
+    'Flying bicycles zoomed past the sleepy purple giraffe flying bicycles zoomed past robots painted the walls with colorful',
+    'Marshmallow clouds floated above the chocolate river valley flying bicycles zoomed past robots painted the walls with colorful',
+    'Time-traveling penguins discovered a hidden treasure in Atlantis flying bicycles zoomed past robots painted the walls with colorful',
+    'The clock ticked backward while frogs wore tiny hats flying bicycles zoomed past robots painted the walls with colorful',
+    'Dancing robots painted the walls with colorful spaghetti sauce flying bicycles zoomed past robots painted the walls with colorful',
+    'A magical unicorn juggled oranges under the starry sky flying bicycles zoomed past robots painted the walls with colorful'
 ];
 
 const ARTICLE_DATES = [
@@ -451,17 +454,17 @@ const ARTICLE_DATES = [
     '2025-01-7',
     '2025-01-15',
     '2024-12-30',
-    '2024-1-21',
+    '2024-01-21',
     '2024-06-26',
     '2024-07-13',
     '2024-07-16',
     '2024-11-14'
-]
+];
 
 const ARTICLE_TITLES = [
     'KoChu!',
     'Furly',
-    'Galery',
+    'Gallery',
     'EcoWave',
     'Quantum',
     'Synergy Consulting Group',
@@ -512,6 +515,8 @@ __webpack_require__.r(__webpack_exports__);
 const MAX_PHOTO_COUNT = 3;
 const MAX_AVATAR_COUNT = 9;
 const MAX_USER_COUNT = 4;
+const MAX_LIKES = 50;
+const MAX_COMMENTS = 34;
 
 
 const generateUser = () => {
@@ -545,6 +550,8 @@ const generateArticle = (maxArticleId) => {
         title: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_TITLES),
         content: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_CONTENTS),
         created_at: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_DATES),
+        likes: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_LIKES),
+        comments: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_COMMENTS),
         user: generateUser(),
         photos: photos
     };
@@ -604,11 +611,16 @@ __webpack_require__.r(__webpack_exports__);
 const sortListElement = document.querySelector('.sort-list');
 const articleListElement = document.getElementById('app');
 
-const compareArticles = (articleA, articleB) => {
+const compareDatesArticles = (articleA, articleB) => {
     const dateA = new Date(articleA.created_at);
     const dateB = new Date(articleB.created_at);
 
     return dateB.getTime() - dateA.getTime();
+}
+
+const comparePopularityArticels = (articleA, articleB) => {
+
+    return (articleB.likes + articleB.comments) - (articleA.likes + articleA.comments)
 }
 
 // замыкание
@@ -628,10 +640,10 @@ const getFilterClickHandler = (articles) => {
                 (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
                 break;
             case _enum_js__WEBPACK_IMPORTED_MODULE_0__.Filter.POPULAR:
-                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
+                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(comparePopularityArticels), articleListElement);
                 break;
             case _enum_js__WEBPACK_IMPORTED_MODULE_0__.Filter.NEW:
-                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(compareArticles), articleListElement);
+                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(compareDatesArticles), articleListElement);
                 break;
         }
     };
