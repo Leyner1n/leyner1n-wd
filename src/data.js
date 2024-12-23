@@ -4,8 +4,8 @@ import {ARTICLE_CONTENTS, ARTICLE_PHOTOS, ARTICLE_TITLES, ARTICLE_DATES} from ".
 const MAX_PHOTO_COUNT = 3;
 const MAX_AVATAR_COUNT = 9;
 const MAX_USER_COUNT = 4;
-const MAX_LIKES = 50;
-const MAX_COMMENTS = 34;
+const MAX_LIKES_COUNT = 50;
+const MAX_COMMENTS_COUNT = 34;
 
 
 const generateUser = () => {
@@ -27,6 +27,7 @@ const generateArticle = (maxArticleId) => {
     while (usedArticleIds.includes(articleId)) {
         articleId = getRandomInt(1, maxArticleId);
     }
+
     usedArticleIds.push(articleId);
 
     const photos = [];
@@ -39,8 +40,8 @@ const generateArticle = (maxArticleId) => {
         title: getRandomArrayElement(ARTICLE_TITLES),
         content: getRandomArrayElement(ARTICLE_CONTENTS),
         created_at: getRandomArrayElement(ARTICLE_DATES),
-        likes: getRandomInt(1, MAX_LIKES),
-        comments: getRandomInt(1, MAX_COMMENTS),
+        likes: getRandomInt(1, MAX_LIKES_COUNT),
+        comments: getRandomInt(1, MAX_COMMENTS_COUNT),
         user: generateUser(),
         photos: photos
     };

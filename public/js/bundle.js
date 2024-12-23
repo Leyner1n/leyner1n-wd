@@ -515,8 +515,8 @@ __webpack_require__.r(__webpack_exports__);
 const MAX_PHOTO_COUNT = 3;
 const MAX_AVATAR_COUNT = 9;
 const MAX_USER_COUNT = 4;
-const MAX_LIKES = 50;
-const MAX_COMMENTS = 34;
+const MAX_LIKES_COUNT = 50;
+const MAX_COMMENTS_COUNT = 34;
 
 
 const generateUser = () => {
@@ -550,8 +550,8 @@ const generateArticle = (maxArticleId) => {
         title: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_TITLES),
         content: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_CONTENTS),
         created_at: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_DATES),
-        likes: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_LIKES),
-        comments: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_COMMENTS),
+        likes: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_LIKES_COUNT),
+        comments: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_COMMENTS_COUNT),
         user: generateUser(),
         photos: photos
     };
@@ -611,15 +611,14 @@ __webpack_require__.r(__webpack_exports__);
 const sortListElement = document.querySelector('.sort-list');
 const articleListElement = document.getElementById('app');
 
-const compareDatesArticles = (articleA, articleB) => {
+const compareArticlesByDate = (articleA, articleB) => {
     const dateA = new Date(articleA.created_at);
     const dateB = new Date(articleB.created_at);
 
     return dateB.getTime() - dateA.getTime();
 }
 
-const comparePopularityArticels = (articleA, articleB) => {
-
+const compareArticlesByPopularity = (articleA, articleB) => {
     return (articleB.likes + articleB.comments) - (articleA.likes + articleA.comments)
 }
 
@@ -640,10 +639,10 @@ const getFilterClickHandler = (articles) => {
                 (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
                 break;
             case _enum_js__WEBPACK_IMPORTED_MODULE_0__.Filter.POPULAR:
-                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(comparePopularityArticels), articleListElement);
+                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(compareArticlesByPopularity), articleListElement);
                 break;
             case _enum_js__WEBPACK_IMPORTED_MODULE_0__.Filter.NEW:
-                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(compareDatesArticles), articleListElement);
+                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(compareArticlesByDate), articleListElement);
                 break;
         }
     };
