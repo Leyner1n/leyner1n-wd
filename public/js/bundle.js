@@ -813,9 +813,7 @@ const articles = (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTI
 (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
 (0,_filters_js__WEBPACK_IMPORTED_MODULE_6__.setFilterClickHandler)(articles);
 
-console.log(articles)
-
-;(0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
+(0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
 (0,_article_form_validation_js__WEBPACK_IMPORTED_MODULE_3__.executeValidation)();
 (0,_animations_header_animations_js__WEBPACK_IMPORTED_MODULE_4__.setFormSearchElement)();
 (0,_animations_header_animations_js__WEBPACK_IMPORTED_MODULE_4__.setSortList)();
