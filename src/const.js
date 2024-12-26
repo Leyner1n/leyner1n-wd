@@ -37,22 +37,33 @@ const ARTICLE_TITLES = [
     'Apex Innovations'
 ];
 
-const ARTICLE_PHOTOS = [
-    '1.jpg',
-    '2.jpg',
-    '3.jpg',
-    '4.jpg',
-    '5.jpg',
-    '6.jpg',
-    '7.jpg',
-    '8.jpg',
-    '9.jpg',
-    '10.jpg'
+const ARTICLE_COMMENTS = [
+    "Great post! Really enjoyed reading it.",
+    "I completely agree with your point of view.",
+    "This is very informative, thank you!",
+    "I have a different perspective on this topic.",
+    "Could you elaborate more on this?",
+    "I love the examples you provided!",
+    "This is a game changer for me.",
+    "I appreciate the effort you put into this.",
+    "What do you think about the recent developments?",
+    "This is a must-read for everyone!",
+    "I found this very helpful, thanks!",
+    "Your writing style is engaging and clear.",
+    "I would love to see more content like this.",
+    "This topic is very relevant right now.",
+    "I learned something new today, thank you!",
+    "I disagree with some points, but it's a good read.",
+    "Can you recommend further reading on this?",
+    "This made me think differently about the subject.",
+    "I shared this with my friends, they loved it!",
+    "Looking forward to your next post!",
+    "Keep up the great work!"
 ];
 
 export {
     ARTICLE_CONTENTS,
     ARTICLE_TITLES,
-    ARTICLE_PHOTOS,
-    ARTICLE_DATES
+    ARTICLE_DATES,
+    ARTICLE_COMMENTS
 }

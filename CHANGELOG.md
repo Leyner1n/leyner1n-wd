@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- refactor-js [WEB-17](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-17)
+- add-popularity-filter [WEB-15](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-15)
+- add-date-filter [WEB-14](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-14)
 - add-header-aside-animations [WEB-13](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-13)
 - add-form-validation [WEB12](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-12)
 - add-create-modal [WEB-11](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-11)
