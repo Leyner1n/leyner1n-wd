@@ -334,7 +334,7 @@ const renderArticleList = (articles, container) => {
         articleElement.querySelector('.content').textContent = article.content;
         articleElement.querySelector('.created-at').textContent = article.created_at;
         articleElement.querySelector('.likes').textContent = article.likes;
-        articleElement.querySelector('.comments').textContent = article.comments;
+        articleElement.querySelector('.comments').textContent = article.comments.length;
         articleElement.querySelector('.username').textContent = article.user.name;
         articleElement.querySelector('.avatar').src = 'img/avatar/' + article.user.avatar_path;
         renderPhotoList(article.photos, photoListElement);
@@ -434,9 +434,9 @@ const onEscKeyDown = (evt) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ARTICLE_COMMENTS: () => (/* binding */ ARTICLE_COMMENTS),
 /* harmony export */   ARTICLE_CONTENTS: () => (/* binding */ ARTICLE_CONTENTS),
 /* harmony export */   ARTICLE_DATES: () => (/* binding */ ARTICLE_DATES),
-/* harmony export */   ARTICLE_PHOTOS: () => (/* binding */ ARTICLE_PHOTOS),
 /* harmony export */   ARTICLE_TITLES: () => (/* binding */ ARTICLE_TITLES)
 /* harmony export */ });
 const ARTICLE_CONTENTS = [
@@ -478,17 +478,28 @@ const ARTICLE_TITLES = [
     'Apex Innovations'
 ];
 
-const ARTICLE_PHOTOS = [
-    '1.jpg',
-    '2.jpg',
-    '3.jpg',
-    '4.jpg',
-    '5.jpg',
-    '6.jpg',
-    '7.jpg',
-    '8.jpg',
-    '9.jpg',
-    '10.jpg'
+const ARTICLE_COMMENTS = [
+    "Great post! Really enjoyed reading it.",
+    "I completely agree with your point of view.",
+    "This is very informative, thank you!",
+    "I have a different perspective on this topic.",
+    "Could you elaborate more on this?",
+    "I love the examples you provided!",
+    "This is a game changer for me.",
+    "I appreciate the effort you put into this.",
+    "What do you think about the recent developments?",
+    "This is a must-read for everyone!",
+    "I found this very helpful, thanks!",
+    "Your writing style is engaging and clear.",
+    "I would love to see more content like this.",
+    "This topic is very relevant right now.",
+    "I learned something new today, thank you!",
+    "I disagree with some points, but it's a good read.",
+    "Can you recommend further reading on this?",
+    "This made me think differently about the subject.",
+    "I shared this with my friends, they loved it!",
+    "Looking forward to your next post!",
+    "Keep up the great work!"
 ];
 
 
@@ -507,64 +518,67 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   generateArticle: () => (/* binding */ generateArticle),
 /* harmony export */   generateArticles: () => (/* binding */ generateArticles)
 /* harmony export */ });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util */ "./src/util.js");
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const */ "./src/const.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util.js */ "./src/util.js");
+/* harmony import */ var _enum_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./enum.js */ "./src/enum.js");
+/* harmony import */ var _const_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./const.js */ "./src/const.js");
 
 
 
-const MAX_PHOTO_COUNT = 3;
+
+const MAX_PHOTO_COUNT = 2;
 const MAX_AVATAR_COUNT = 9;
 const MAX_USER_COUNT = 4;
-const MAX_LIKES_COUNT = 50;
-const MAX_COMMENTS_COUNT = 34;
-
+const MAX_LIKE_COUNT = 50;
+const MAX_COMMENT_COUNT = 20;
 
 const generateUser = () => {
     return {
-        id: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_USER_COUNT),
+        id: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_USER_COUNT),
         name: 'mr.Death',
-        email: '@',
-        password: '*****',
-        avatar_path: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_AVATAR_COUNT) + '.jpg',
-        locale: 'en',
+        email: 'dev@dev.dev',
+        password: '123456',
+        avatar_path: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_AVATAR_COUNT) + _enum_js__WEBPACK_IMPORTED_MODULE_1__.Extention.Jpg,
+        locale: _enum_js__WEBPACK_IMPORTED_MODULE_1__.Locale.English,
         created_at: '2025-01-01',
     };
 };
 
-const usedArticleIds = [];
-
-const generateArticle = (maxArticleId) => {
-    let articleId = (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, maxArticleId);
-    while (usedArticleIds.includes(articleId)) {
-        articleId = (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, maxArticleId);
+const generateComment = () => {
+    return {
+        id: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_USER_COUNT),
+        txt_content: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const_js__WEBPACK_IMPORTED_MODULE_2__.ARTICLE_COMMENTS),
+        user: generateUser(),
+        created_at: '2025-01-01'
     }
-    usedArticleIds.push(articleId);
+}
 
-    const photos = [];
-    for (let i = 1; i <= (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_PHOTO_COUNT); i++) {
-        photos.push((0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_PHOTOS));
+const generateArticle = function (maxArticleId) {
+    // статическая переменная
+    if (generateArticle.usedArticleIds === undefined) {
+        generateArticle.usedArticleIds = [];
     }
+
+    let articleId = (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, maxArticleId);
+    while (generateArticle.usedArticleIds.includes(articleId)) {
+        articleId = (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, maxArticleId);
+    }
+
+    generateArticle.usedArticleIds.push(articleId);
 
     return {
         id: articleId,
-        title: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_TITLES),
-        content: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_CONTENTS),
-        created_at: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const__WEBPACK_IMPORTED_MODULE_1__.ARTICLE_DATES),
-        likes: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_LIKES_COUNT),
-        comments: (0,_util__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_COMMENTS_COUNT),
+        title: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const_js__WEBPACK_IMPORTED_MODULE_2__.ARTICLE_TITLES),
+        txt_content: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const_js__WEBPACK_IMPORTED_MODULE_2__.ARTICLE_CONTENTS),
+        likes: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_LIKE_COUNT),
+        comments: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getItems)([0, MAX_COMMENT_COUNT], [generateComment]),
         user: generateUser(),
-        photos: photos
+        photos: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getItems)([1, MAX_PHOTO_COUNT], [_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomInt, [1, 10]], [_enum_js__WEBPACK_IMPORTED_MODULE_1__.Extention.Jpg]),
+        created_at: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const_js__WEBPACK_IMPORTED_MODULE_2__.ARTICLE_DATES)
     };
 };
 
 const generateArticles = (count) => {
-    const articles = [];
-
-    for (let i = 1; i <= count; i++) {
-        articles.push(generateArticle(count));
-    }
-
-    return articles;
+    return (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getItems)([count], [generateArticle, [count]]);
 };
 
 
@@ -580,13 +594,24 @@ const generateArticles = (count) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Filter: () => (/* binding */ Filter)
+/* harmony export */   Extention: () => (/* binding */ Extention),
+/* harmony export */   Filter: () => (/* binding */ Filter),
+/* harmony export */   Locale: () => (/* binding */ Locale)
 /* harmony export */ });
 const Filter = {
     ALL: 'all',
     POPULAR: 'popular',
     NEW: 'new'
-}
+};
+
+const Locale = {
+    English: 'en',
+    Russian: 'ru'
+};
+
+const Extention = {
+    Jpg: '.jpg'
+};
 
 
 
@@ -611,9 +636,10 @@ __webpack_require__.r(__webpack_exports__);
 const sortListElement = document.querySelector('.sort-list');
 const articleListElement = document.getElementById('app');
 
-const compareArticlesByDate = (articleA, articleB) => {
-    const dateA = new Date(articleA.created_at);
-    const dateB = new Date(articleB.created_at);
+// деструктуризация объекта
+const compareArticlesByDate = ({created_at: createdA}, {created_at: createdB}) => {
+    const dateA = new Date(createdA);
+    const dateB = new Date(createdB);
 
     return dateB.getTime() - dateA.getTime();
 }
@@ -665,19 +691,36 @@ const setFilterClickHandler = (articles) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getItems: () => (/* binding */ getItems),
 /* harmony export */   getRandomArrayElement: () => (/* binding */ getRandomArrayElement),
 /* harmony export */   getRandomInt: () => (/* binding */ getRandomInt)
 /* harmony export */ });
+
 const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
 
     return Math.floor(Math.random() * (max - min + 1) + min);
-}
+};
+
+const getItems = (range, callback, args = []) => {
+    const items = [];
+    range = range.length === 2 ? getRandomInt(...range) : range[0];
+
+    for (let i = 0; i < range; i++) {
+        if (args.length) {
+            items.push(callback[0](...callback[1]) + args[0]);
+        } else {
+            items.push(callback[0](...callback[1] ?? []));
+        }
+    }
+
+    return items;
+};
 
 const getRandomArrayElement = (array) => {
     return array[getRandomInt(0, array.length - 1)];
-}
+};
 
 
 
@@ -770,7 +813,9 @@ const articles = (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTI
 (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
 (0,_filters_js__WEBPACK_IMPORTED_MODULE_6__.setFilterClickHandler)(articles);
 
-(0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
+console.log(articles)
+
+;(0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
 (0,_article_form_validation_js__WEBPACK_IMPORTED_MODULE_3__.executeValidation)();
 (0,_animations_header_animations_js__WEBPACK_IMPORTED_MODULE_4__.setFormSearchElement)();
 (0,_animations_header_animations_js__WEBPACK_IMPORTED_MODULE_4__.setSortList)();

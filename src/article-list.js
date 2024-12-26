@@ -27,7 +27,7 @@ const renderArticleList = (articles, container) => {
         articleElement.querySelector('.content').textContent = article.content;
         articleElement.querySelector('.created-at').textContent = article.created_at;
         articleElement.querySelector('.likes').textContent = article.likes;
-        articleElement.querySelector('.comments').textContent = article.comments;
+        articleElement.querySelector('.comments').textContent = article.comments.length;
         articleElement.querySelector('.username').textContent = article.user.name;
         articleElement.querySelector('.avatar').src = 'img/avatar/' + article.user.avatar_path;
         renderPhotoList(article.photos, photoListElement);

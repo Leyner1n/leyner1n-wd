@@ -14,6 +14,8 @@ const articles = generateArticles(ARTICLE_COUNT);
 renderArticleList(articles, articleListElement);
 setFilterClickHandler(articles);
 
+console.log(articles)
+
 setCreateArticleBtnClick();
 executeValidation();
 setFormSearchElement();

@@ -4,9 +4,10 @@ import { renderArticleList } from './article-list.js';
 const sortListElement = document.querySelector('.sort-list');
 const articleListElement = document.getElementById('app');
 
-const compareArticlesByDate = (articleA, articleB) => {
-    const dateA = new Date(articleA.created_at);
-    const dateB = new Date(articleB.created_at);
+// деструктуризация объекта
+const compareArticlesByDate = ({created_at: createdA}, {created_at: createdB}) => {
+    const dateA = new Date(createdA);
+    const dateB = new Date(createdB);
 
     return dateB.getTime() - dateA.getTime();
 }
