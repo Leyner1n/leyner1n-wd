@@ -45,7 +45,7 @@ const generateArticle = function (maxArticleId) {
     return {
         id: articleId,
         title: getRandomArrayElement(ARTICLE_TITLES),
-        txt_content: getRandomArrayElement(ARTICLE_CONTENTS),
+        content: getRandomArrayElement(ARTICLE_CONTENTS),
         likes: getRandomInt(1, MAX_LIKE_COUNT),
         comments: getItems([0, MAX_COMMENT_COUNT], [generateComment]),
         user: generateUser(),
