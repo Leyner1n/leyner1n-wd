@@ -331,7 +331,7 @@ const renderArticleList = (articles, container) => {
 
         articleElement.dataset.id = article.id;
         articleElement.querySelector('.title').textContent = article.title;
-        articleElement.querySelector('.content').textContent = article.content;
+        articleElement.querySelector('.content').textContent = article.txt_content;
         articleElement.querySelector('.created-at').textContent = article.created_at;
         articleElement.querySelector('.likes').textContent = article.likes;
         articleElement.querySelector('.comments').textContent = article.comments.length;
@@ -369,7 +369,8 @@ const renderArticleList = (articles, container) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   closeArticleModal: () => (/* binding */ closeArticleModal),
-/* harmony export */   openArticleModal: () => (/* binding */ openArticleModal)
+/* harmony export */   openArticleModal: () => (/* binding */ openArticleModal),
+/* harmony export */   renderCommentList: () => (/* binding */ renderCommentList)
 /* harmony export */ });
 /* harmony import */ var _article_list__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./article-list */ "./src/article-list.js");
 
@@ -380,18 +381,31 @@ const articleModalAvatarElement = articleModalElement.querySelector('.avatar');
 const articleModalUsernameElement = articleModalElement.querySelector('.username');
 const articleModalCreatedAtElement = articleModalElement.querySelector('.created-at');
 const articleModalTitleElement = articleModalElement.querySelector('.title');
-const articleModalContentElement = articleModalElement.querySelector('.content');
+const articleModalDescriptionElement = articleModalElement.querySelector('.description');
 const photoListElement = articleModalElement.querySelector('.photo-list');
+const articleElement = articleModalElement.querySelector('.comments-list');
+
+const renderCommentList = (comments, container) => {
+    for (const comment of comments) {
+        const html = `
+            <li class="photo-item">
+                <p>${comment.txt_content}</p>
+            </li>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+    }
+}
 
 const openArticleModal = (article) => {
     photoListElement.innerHTML = '';
+    articleElement.innerHTML = '';
     articleModalAvatarElement.src = 'img/avatar/' + article.user.avatar_path;
     articleModalUsernameElement.textContent = article.user.name;
     articleModalCreatedAtElement.textContent = article.created_at;
-
     articleModalTitleElement.textContent = article.title;
-    articleModalContentElement.textContent = article.content;
+    articleModalDescriptionElement.textContent =article.description;
 
+    renderCommentList(article.comments, articleElement);
     (0,_article_list__WEBPACK_IMPORTED_MODULE_0__.renderPhotoList)(article.photos, photoListElement);
 
     articleModalElement.classList.add('open');
@@ -437,6 +451,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ARTICLE_COMMENTS: () => (/* binding */ ARTICLE_COMMENTS),
 /* harmony export */   ARTICLE_CONTENTS: () => (/* binding */ ARTICLE_CONTENTS),
 /* harmony export */   ARTICLE_DATES: () => (/* binding */ ARTICLE_DATES),
+/* harmony export */   ARTICLE_DESCRIPTION: () => (/* binding */ ARTICLE_DESCRIPTION),
 /* harmony export */   ARTICLE_TITLES: () => (/* binding */ ARTICLE_TITLES)
 /* harmony export */ });
 const ARTICLE_CONTENTS = [
@@ -502,6 +517,35 @@ const ARTICLE_COMMENTS = [
     "Keep up the great work!"
 ];
 
+const ARTICLE_DESCRIPTION = [
+    'Quantum Innovations is a cutting-edge technology firm specializing in quantum computing solutions. Founded by a team of visionary physicists and engineers, the company aims to revolutionize data processing by leveraging the principles of quantum mechanics. With a mission to solve complex problems beyond the reach of classical computing, Quantum Innovations is focused on developing algorithms that can dramatically increase computational speed and efficiency across various sectors, including finance, healthcare, and artificial intelligence.\n' +
+    '\n' +
+    'The company’s flagship product, the QuantumCore processor, is designed to handle massive datasets with unparalleled speed, enabling businesses to gain insights and make data-driven decisions faster than ever. Quantum Innovations also offers consulting services to corporations looking to understand and implement quantum technologies into their operations. \n' +
+    '\n' +
+    'At Quantum Innovations, we believe that the future lies in the fusion of technology and intelligence. Our diverse team is committed to fostering an inclusive environment that encourages creativity and original thinking. As we continue to push the boundaries of science and technology, we strive to make the world a better place by providing innovative solutions that help mitigate global challenges.',
+    'EcoSphere Solutions is an eco-friendly consulting firm devoted to promoting sustainability and environmental stewardship in businesses. Founded in 2018, the company combines scientific expertise with business acumen to provide tailored strategies that reduce carbon footprints and enhance corporate responsibility. \n' +
+    '\n' +
+    'At EcoSphere Solutions, we understand that sustainability isn\'t just a trend; it’s a necessity for the future of our planet. Our team of environmental scientists, engineers, and business strategists work collaboratively with clients to assess their environmental impact and implement effective solutions. Services include energy audits, waste management strategies, and sustainability training programs for employees.\n' +
+    '\n' +
+    'Our flagship initiative, the Green Business Program, guides organizations through the process of becoming certified green. By adopting sustainable practices, our clients not only help the environment but also improve their brand image and attract eco-conscious consumers. We believe that together, we can create a healthier planet for future generations. Join us at EcoSphere Solutions to pave the way for a sustainable future.',
+    'Aether Travel Co. specializes in crafting unique travel experiences that transcend traditional tourism. Founded in 2020, this innovative company offers bespoke journeys that combine adventure, culture, and education, allowing travelers to immerse themselves in the essence of each destination.\n' +
+    '\n' +
+    'At Aether Travel, we curate personalized travel itineraries that reflect the interests and passions of our clients. Whether it’s exploring the vibrant street art of Berlin or participating in culinary workshops in Tuscany, each journey is designed to leave a lasting impression. Our team of travel experts collaborates closely with local guides and artisans, ensuring that every experience supports and uplifts the communities we visit.\n' +
+    '\n' +
+    'Sustainability is at the heart of Aether Travel Co. We prioritize eco-friendly practices throughout our operations, from carbon offsetting to supporting local businesses. We believe that travel should be a force for good, enriching the lives of our clients while positively impacting the world. Embark on an unforgettable adventure with Aether Travel Co., where every journey is a new story waiting to be told.',
+    'Nexus Design Group is an avant-garde design and architecture firm that emphasizes creativity, sustainability, and functionality. Established in 2015, the firm’s goal is to create spaces that resonate with both aesthetics and purpose. By integrating modern design principles with environmental awareness, Nexus Design Group seeks to challenge conventional building practices.\n' +
+    '\n' +
+    'With a portfolio that spans residential, commercial, and public spaces, each project reflects the unique vision of the client while adhering to sustainable building standards. The firm employs a multidisciplinary approach, bringing together architects, interior designers, and urban planners to collaborate on innovative solutions. \n' +
+    '\n' +
+    'Nexus Design Group champions green architecture by incorporating renewable materials and energy-efficient technologies into their designs. Our flagship project, the EcoHaven Community Center, serves as a model for sustainable living, blending nature with modern architecture. As we look to the future, we remain committed to redefining design standards and making lasting contributions to our environment.',
+    'Infinity Outreach is a non-profit organization focused on empowering underserved communities through education and skill development. Established in 2019, we believe that access to knowledge can transform lives and create pathways to success.\n' +
+    '\n' +
+    'Our programs range from literacy initiatives to vocational training, providing individuals with the tools they need to thrive in today\'s world. Infinity Outreach partners with local schools, businesses, and volunteers to create tailored programs that meet the unique needs of each community. Our dedicated team of educators and community advocates works tirelessly to inspire and uplift those we serve.\n' +
+    '\n' +
+    'The highlight of our efforts is the Infinity Scholars Program, which offers scholarships and mentorship to high-achieving students from low-income backgrounds. By investing in education, we aim to break the cycle of poverty and foster a brighter future for generations to come. At Infinity Outreach, we believe that every individual deserves the opportunity to achieve their dreams. Join us in making a difference and empowering communities to reach their full potential.'
+
+];
+
 
 
 
@@ -525,7 +569,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const MAX_PHOTO_COUNT = 2;
+const MAX_PHOTO_COUNT = 3;
 const MAX_AVATAR_COUNT = 9;
 const MAX_USER_COUNT = 4;
 const MAX_LIKE_COUNT = 50;
@@ -568,7 +612,8 @@ const generateArticle = function (maxArticleId) {
     return {
         id: articleId,
         title: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const_js__WEBPACK_IMPORTED_MODULE_2__.ARTICLE_TITLES),
-        content: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const_js__WEBPACK_IMPORTED_MODULE_2__.ARTICLE_CONTENTS),
+        txt_content: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const_js__WEBPACK_IMPORTED_MODULE_2__.ARTICLE_CONTENTS),
+        description: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomArrayElement)(_const_js__WEBPACK_IMPORTED_MODULE_2__.ARTICLE_DESCRIPTION),
         likes: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getRandomInt)(1, MAX_LIKE_COUNT),
         comments: (0,_util_js__WEBPACK_IMPORTED_MODULE_0__.getItems)([0, MAX_COMMENT_COUNT], [generateComment]),
         user: generateUser(),
@@ -643,7 +688,8 @@ const compareDatesArticles = (articleA, articleB) => {
     return dateB.getTime() - dateA.getTime();
 }
 
-const comparePopularityArticels = (articleA, articleB) => {
+
+const compareArticlesByPopularity = (articleA, articleB) => {
     return (articleB.likes + articleB.comments.length) - (articleA.likes + articleA.comments.length)
 }
 
@@ -796,6 +842,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _animations_header_animations_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./animations/header-animations.js */ "./src/animations/header-animations.js");
 /* harmony import */ var _animations_aside_animations_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./animations/aside-animations.js */ "./src/animations/aside-animations.js");
 /* harmony import */ var _filters_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./filters.js */ "./src/filters.js");
+/* harmony import */ var _article_modal_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./article-modal.js */ "./src/article-modal.js");
+
 
 
 
@@ -806,18 +854,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const articleListElement = document.getElementById('app');
-const ARTICLE_COUNT = 10;
+const ARTICLE_COUNT = 30;
 
 const articles = (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.generateArticles)(ARTICLE_COUNT);
 (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
 (0,_filters_js__WEBPACK_IMPORTED_MODULE_6__.setFilterClickHandler)(articles);
+
+console.log(articles);
+
+// for (const article of articles) {
+//     console.log(article.comments)
+// }
 
 (0,_article_form_modal_js__WEBPACK_IMPORTED_MODULE_2__.setCreateArticleBtnClick)();
 (0,_article_form_validation_js__WEBPACK_IMPORTED_MODULE_3__.executeValidation)();
 (0,_animations_header_animations_js__WEBPACK_IMPORTED_MODULE_4__.setFormSearchElement)();
 (0,_animations_header_animations_js__WEBPACK_IMPORTED_MODULE_4__.setSortList)();
 (0,_animations_aside_animations_js__WEBPACK_IMPORTED_MODULE_5__.setAsideNavList)();
-
+(0,_article_modal_js__WEBPACK_IMPORTED_MODULE_7__.renderCommentList)();
 })();
 
 /******/ })()
