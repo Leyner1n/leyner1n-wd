@@ -24,7 +24,7 @@ const renderArticleList = (articles, container) => {
 
         articleElement.dataset.id = article.id;
         articleElement.querySelector('.title').textContent = article.title;
-        articleElement.querySelector('.content').textContent = article.content;
+        articleElement.querySelector('.content').textContent = article.txt_content;
         articleElement.querySelector('.created-at').textContent = article.created_at;
         articleElement.querySelector('.likes').textContent = article.likes;
         articleElement.querySelector('.comments').textContent = article.comments.length;

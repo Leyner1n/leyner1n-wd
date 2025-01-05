@@ -13,7 +13,7 @@ const compareArticlesByDate = ({created_at: createdA}, {created_at: createdB}) =
 }
 
 const compareArticlesByPopularity = (articleA, articleB) => {
-    return (articleB.likes + articleB.comments) - (articleA.likes + articleA.comments)
+    return (articleB.likes + articleB.comments.length) - (articleA.likes + articleA.comments.length)
 }
 
 // замыкание
