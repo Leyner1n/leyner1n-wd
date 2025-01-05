@@ -681,13 +681,13 @@ __webpack_require__.r(__webpack_exports__);
 const sortListElement = document.querySelector('.sort-list');
 const articleListElement = document.getElementById('app');
 
-// деструктуризация объекта
-const compareArticlesByDate = ({created_at: createdA}, {created_at: createdB}) => {
-    const dateA = new Date(createdA);
-    const dateB = new Date(createdB);
+const compareDatesArticles = (articleA, articleB) => {
+    const dateA = new Date(articleA.created_at);
+    const dateB = new Date(articleB.created_at);
 
     return dateB.getTime() - dateA.getTime();
 }
+
 
 const compareArticlesByPopularity = (articleA, articleB) => {
     return (articleB.likes + articleB.comments.length) - (articleA.likes + articleA.comments.length)
@@ -710,10 +710,10 @@ const getFilterClickHandler = (articles) => {
                 (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles, articleListElement);
                 break;
             case _enum_js__WEBPACK_IMPORTED_MODULE_0__.Filter.POPULAR:
-                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(compareArticlesByPopularity), articleListElement);
+                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(comparePopularityArticels), articleListElement);
                 break;
             case _enum_js__WEBPACK_IMPORTED_MODULE_0__.Filter.NEW:
-                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(compareArticlesByDate), articleListElement);
+                (0,_article_list_js__WEBPACK_IMPORTED_MODULE_1__.renderArticleList)(articles.slice().sort(compareDatesArticles), articleListElement);
                 break;
         }
     };

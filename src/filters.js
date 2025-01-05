@@ -4,10 +4,9 @@ import { renderArticleList } from './article-list.js';
 const sortListElement = document.querySelector('.sort-list');
 const articleListElement = document.getElementById('app');
 
-// деструктуризация объекта
-const compareArticlesByDate = ({created_at: createdA}, {created_at: createdB}) => {
-    const dateA = new Date(createdA);
-    const dateB = new Date(createdB);
+const compareDatesArticles = (articleA, articleB) => {
+    const dateA = new Date(articleA.created_at);
+    const dateB = new Date(articleB.created_at);
 
     return dateB.getTime() - dateA.getTime();
 }
@@ -33,10 +32,10 @@ const getFilterClickHandler = (articles) => {
                 renderArticleList(articles, articleListElement);
                 break;
             case Filter.POPULAR:
-                renderArticleList(articles.slice().sort(compareArticlesByPopularity), articleListElement);
+                renderArticleList(articles.slice().sort(comparePopularityArticels), articleListElement);
                 break;
             case Filter.NEW:
-                renderArticleList(articles.slice().sort(compareArticlesByDate), articleListElement);
+                renderArticleList(articles.slice().sort(compareDatesArticles), articleListElement);
                 break;
         }
     };
