@@ -10,10 +10,24 @@
     background-color: rgba(0, 0, 0, 0.65);
 }
 
-.modal-body {
+#article-modal.open {
     display: flex;
-    flex-direction: column;
-    padding: 25px 0 25px 25px;
+}
+
+#article-modal .modal-body {
+    width: 1150px;
+    height: 780px;
+    border-radius: 25px;
+    background-color: rgb(48, 48, 48);
+}
+
+.modal-open {
+    overflow: hidden;
+    padding-right: var(--scrollbar-width);
+}
+
+.modal-body {
+    padding: 25px 40px 25px 25px;
     background-color: rgb(30, 30, 30);
     border-radius: 8px;
     color: rgb(255, 255, 255);
@@ -25,68 +39,104 @@
     align-items: center;
 }
 
-.modal-body .user .avatar {
+.head-modal-article {
+    display: flex;
+    justify-content: space-between;
+}
+
+.avatar {
     margin-right: 15px;
 }
 
-.modal-body .user .username {
+.username {
+    font-size: 20px;
     font-weight: bolder;
-    font-size: 17px;
-    cursor: pointer;
     margin-right: 15px;
 }
 
-.modal-body .user .username:hover {
-    border-bottom: 2px solid;
-}
-
-.modal-body .user .created-at {
-    font-weight: bolder;
-    font-size: 14px;
-    color: rgb(122, 122, 122);
-}
-
-.modal-body .title {
-    font-weight: bolder;
-    font-size: 45px;
-}
-
-.modal-body .content {
-    font-weight: bolder;
+.created-at {
     font-size: 15px;
-    margin-bottom: 130px;
+    font-weight: bolder;
+    color: #818181;
 }
 
-.modal-body .photo-list {
+.head-modal-article .fa-heart {
+    position: relative;
+    top: 20px;
+    font-size: 35px;
+    color: #b4b4b4;
+}
+
+.modal-body .article-container {
     display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    justify-content: space-between;
+    margin-top: 15px;
 }
 
-.modal-body .photo-list img {
-    object-fit: cover;
-    object-position: center;
-    width: 150px;
-    height: 150px;
+.modal-body .article-info {
+    width: 100%;
+    /*border: 1px solid;*/
+    /*box-sizing: border-box;*/
+    padding: 25px;
+    border-radius: 12px;
+    max-height: 645px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgb(35, 35, 35);
 }
 
-.modal-body .photo-list li:not(:first-child) {
-    margin-left: 10px;
-}
-
-#article-modal.open {
+.project-info {
     display: flex;
+    flex-direction: column;
+    height: 850px;
 }
 
-#article-modal .modal-body {
-    width: 800px;
-    height: 530px;
-    border-radius: 25px;
-    background-color: rgb(45, 45, 45);
+.indicative-inscriptions {
+    align-self: end;
+    font-weight: bolder;
+    font-size: 30px;
+    margin: 0 0 20px 0;
+    color: rgb(255, 255, 255);
+    padding: 7px;
+    border-radius: 7px;
+    background-color: rgba(94, 94, 94, 0.45);
 }
 
-.modal-open {
-    overflow: hidden;
-    padding-right: var(--scrollbar-width);
+.modal-body .article-info .title {
+    align-self: center;
+    font-weight: bolder;
+    font-size: 65px;
+    margin: 0 0 70px 0;
+}
+
+.content-container {
+    height: 450px;
+}
+
+.modal-body .article-info .description {
+    padding: 30px;
+    border-radius: 14px;
+    margin: 0 30px 30px 0;
+    background-color: rgb(25, 25, 25);
+    font-weight: bolder;
+    font-size: 18px;
+    color: #e3e3e3;
+}
+
+.article-container .photo-list {
+    align-self: start;
+    margin: 0 0 50px 0;
+}
+
+.article-container .photo-list img {
+    width: 280px;
+    height: 280px;
+}
+
+.article-container .photo-list li {
+    margin-right: 10px;
+}
+
+.article-grade {
+    margin-top: 150px;
 }
