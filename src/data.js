@@ -1,8 +1,8 @@
 import { getItems, getRandomArrayElement, getRandomInt } from './util.js';
 import { Locale, Extention } from './enum.js';
-import { ARTICLE_CONTENTS, ARTICLE_TITLES, ARTICLE_DATES, ARTICLE_COMMENTS } from './const.js';
+import { ARTICLE_CONTENTS, ARTICLE_TITLES, ARTICLE_DATES, ARTICLE_COMMENTS, ARTICLE_DESCRIPTION } from './const.js';
 
-const MAX_PHOTO_COUNT = 2;
+const MAX_PHOTO_COUNT = 3;
 const MAX_AVATAR_COUNT = 9;
 const MAX_USER_COUNT = 4;
 const MAX_LIKE_COUNT = 50;
@@ -45,7 +45,8 @@ const generateArticle = function (maxArticleId) {
     return {
         id: articleId,
         title: getRandomArrayElement(ARTICLE_TITLES),
-        content: getRandomArrayElement(ARTICLE_CONTENTS),
+        txt_content: getRandomArrayElement(ARTICLE_CONTENTS),
+        description: getRandomArrayElement(ARTICLE_DESCRIPTION),
         likes: getRandomInt(1, MAX_LIKE_COUNT),
         comments: getItems([0, MAX_COMMENT_COUNT], [generateComment]),
         user: generateUser(),

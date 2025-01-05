@@ -6,18 +6,31 @@ const articleModalAvatarElement = articleModalElement.querySelector('.avatar');
 const articleModalUsernameElement = articleModalElement.querySelector('.username');
 const articleModalCreatedAtElement = articleModalElement.querySelector('.created-at');
 const articleModalTitleElement = articleModalElement.querySelector('.title');
-const articleModalContentElement = articleModalElement.querySelector('.content');
+const articleModalDescriptionElement = articleModalElement.querySelector('.description');
 const photoListElement = articleModalElement.querySelector('.photo-list');
+const articleElement = articleModalElement.querySelector('.comments-list');
+
+const renderCommentList = (comments, container) => {
+    for (const comment of comments) {
+        const html = `
+            <li class="photo-item">
+                <p>${comment.txt_content}</p>
+            </li>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+    }
+}
 
 const openArticleModal = (article) => {
     photoListElement.innerHTML = '';
+    articleElement.innerHTML = '';
     articleModalAvatarElement.src = 'img/avatar/' + article.user.avatar_path;
     articleModalUsernameElement.textContent = article.user.name;
     articleModalCreatedAtElement.textContent = article.created_at;
-
     articleModalTitleElement.textContent = article.title;
-    articleModalContentElement.textContent = article.content;
+    articleModalDescriptionElement.textContent =article.description;
 
+    renderCommentList(article.comments, articleElement);
     renderPhotoList(article.photos, photoListElement);
 
     articleModalElement.classList.add('open');
@@ -49,5 +62,6 @@ const onEscKeyDown = (evt) => {
 
 export {
     openArticleModal,
-    closeArticleModal
+    closeArticleModal,
+    renderCommentList
 }

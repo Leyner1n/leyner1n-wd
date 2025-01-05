@@ -11,7 +11,7 @@ const compareDatesArticles = (articleA, articleB) => {
     return dateB.getTime() - dateA.getTime();
 }
 
-const comparePopularityArticels = (articleA, articleB) => {
+const compareArticlesByPopularity = (articleA, articleB) => {
     return (articleB.likes + articleB.comments.length) - (articleA.likes + articleA.comments.length)
 }
 
