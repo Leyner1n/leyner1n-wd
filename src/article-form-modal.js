@@ -42,11 +42,6 @@ const onEscKeyDown = (evt) => {
     }
 }
 
-const setCreateArticleBtnClick = () => {
+if (articleFormOpenElement) {
     articleFormOpenElement.addEventListener('click', openArticleFormModal);
-}
-
-
-export {
-    setCreateArticleBtnClick,
 }

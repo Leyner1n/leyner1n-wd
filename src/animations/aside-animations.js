@@ -23,13 +23,6 @@ const openNavList = (evt) => {
     }
 }
 
-const setAsideNavList = () => {
-    for (let btn of btnsArray) {
-        btn.addEventListener('click', openNavList);
-    }
-
-}
-
-export {
-    setAsideNavList
+for (let btn of btnsArray) {
+    btn.addEventListener('click', openNavList);
 }
