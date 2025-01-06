@@ -27,10 +27,6 @@ const onOverlayClick = (evt) => {
     }
 }
 
-const setFormSearchElement = () => {
-    formSearchElement.addEventListener('click', showChoice)
-}
-
 const openFilter = (evt) => {
     for (let filter of filterList) {
         filter.classList.remove('open');
@@ -40,12 +36,10 @@ const openFilter = (evt) => {
 }
 
 const setSortList = () => {
-    for (let filter of filterList) {
-        filter.addEventListener('click', openFilter);
-    }
+
 }
 
-export {
-    setFormSearchElement,
-    setSortList
+formSearchElement.addEventListener('click', showChoice)
+for (let filter of filterList) {
+    filter.addEventListener('click', openFilter);
 }

@@ -1,35 +1,30 @@
-const homeBtn = document.getElementById('home-btn');
-const createBtn = document.getElementById('create-card');
-const notifnotificationsBtn = document.getElementById('notifications-btn');
-const messageBtn = document.getElementById('message-btn');
-const articleFormCloseBtn = document.getElementById('close-btn');
+const sidebarElement = document.querySelector('.sidebar');
+const homeBtnElement = sidebarElement.querySelector('#home-btn');
+const articleFormOpenElement = sidebarElement.querySelector('#create-card');
+const articleFormCloseElement = document.querySelector('#close-btn');
+const notifnotificationsBtnElement = sidebarElement.querySelector('#notifications-btn');
+const messageBtnElement = sidebarElement.querySelector('#message-btn');
 
-const btnsArray = [
-    homeBtn,
-    createBtn,
-    notifnotificationsBtn,
-    messageBtn,
-    articleFormCloseBtn
-]
+const btnElements = [
+    homeBtnElement,
+    articleFormOpenElement,
+    notifnotificationsBtnElement,
+    messageBtnElement,
+    articleFormCloseElement
+];
 
 const openNavList = (evt) => {
-    for (let btn of btnsArray) {
-        btn.classList.remove('open');
+    for (const btnElement of btnElements) {
+        btnElement.classList.remove('open');
     }
-    if (evt.target === articleFormCloseBtn) {
-        homeBtn.classList.add('open');
+
+    if (evt.target === articleFormCloseElement) {
+        homeBtnElement.classList.add('open');
     } else {
         evt.target.classList.add('open');
     }
 }
 
-const setAsideNavList = () => {
-    for (let btn of btnsArray) {
-        btn.addEventListener('click', openNavList);
-    }
-
-}
-
-export {
-    setAsideNavList
+for (const btnElement of btnElements) {
+    btnElement.addEventListener('click', openNavList);
 }

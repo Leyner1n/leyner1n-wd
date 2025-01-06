@@ -32,7 +32,7 @@ const getFilterClickHandler = (articles) => {
                 renderArticleList(articles, articleListElement);
                 break;
             case Filter.POPULAR:
-                renderArticleList(articles.slice().sort(comparePopularityArticels), articleListElement);
+                renderArticleList(articles.slice().sort(compareArticlesByPopularity), articleListElement);
                 break;
             case Filter.NEW:
                 renderArticleList(articles.slice().sort(compareDatesArticles), articleListElement);

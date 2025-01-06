@@ -63,5 +63,4 @@ const onEscKeyDown = (evt) => {
 export {
     openArticleModal,
     closeArticleModal,
-    renderCommentList
 }

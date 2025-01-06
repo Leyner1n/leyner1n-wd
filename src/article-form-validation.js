@@ -9,15 +9,6 @@ const PROJECT_NAME_LIMITATION = [2, 30];
 const SHORT_DESCRIPTION_LIMITATION = [10, 40];
 const DESCRIPTION_LIMITATION = [20, 250];
 
-const executeValidation = () => {
-    repositoryUrlElement.addEventListener('input', checkUrl);
-    hostUrlElement.addEventListener('input', checkUrl);
-    projectNameElement.addEventListener('input', checkProjectName);
-    shortDescriptionElement.addEventListener('input', checkshortDescriptionElement);
-    descriptionElement.addEventListener('input', checkDescriptionElement);
-    addPostBtn.addEventListener('click', validateBeforeClickBtn);
-}
-
 const checkProjectName = (evt) => {
     let error = 'rgb(45, 45, 45)';
 
@@ -100,6 +91,9 @@ const validateBeforeClickBtn = () => {
     repositoryUrlElement.setAttribute('style', 'background-color: ' + colorArray[4]);
 }
 
-export {
-    executeValidation
-}
+repositoryUrlElement.addEventListener('input', checkUrl);
+hostUrlElement.addEventListener('input', checkUrl);
+projectNameElement.addEventListener('input', checkProjectName);
+shortDescriptionElement.addEventListener('input', checkshortDescriptionElement);
+descriptionElement.addEventListener('input', checkDescriptionElement);
+addPostBtn.addEventListener('click', validateBeforeClickBtn);
