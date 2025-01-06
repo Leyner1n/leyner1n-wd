@@ -23,6 +23,6 @@ const openNavList = (evt) => {
     }
 }
 
-for (let btn of btnElements) {
-    btn.addEventListener('click', openNavList);
+for (let btnElement of btnElements) {
+    btnElement.addEventListener('click', openNavList);
 }
