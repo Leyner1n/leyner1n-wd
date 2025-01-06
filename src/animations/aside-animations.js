@@ -4,7 +4,7 @@ const notifnotificationsBtn = document.getElementById('notifications-btn');
 const messageBtn = document.getElementById('message-btn');
 const articleFormCloseBtn = document.getElementById('close-btn');
 
-const btnsArray = [
+const btnElements = [
     homeBtn,
     createBtn,
     notifnotificationsBtn,
@@ -13,7 +13,7 @@ const btnsArray = [
 ]
 
 const openNavList = (evt) => {
-    for (let btn of btnsArray) {
+    for (let btn of btnElements) {
         btn.classList.remove('open');
     }
     if (evt.target === articleFormCloseBtn) {
@@ -23,6 +23,6 @@ const openNavList = (evt) => {
     }
 }
 
-for (let btn of btnsArray) {
+for (let btn of btnElements) {
     btn.addEventListener('click', openNavList);
 }
