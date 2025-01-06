@@ -1,4 +1,4 @@
-import { getItems, getRandomArrayElement, getRandomInt } from './util.js';
+import { getRandomArrayElement, getRandomInt } from './util.js';
 import { Locale, Extention } from './enum.js';
 import { ARTICLE_CONTENTS, ARTICLE_TITLES, ARTICLE_DATES, ARTICLE_COMMENTS, ARTICLE_DESCRIPTION } from './const.js';
 
@@ -7,6 +7,21 @@ const MAX_AVATAR_COUNT = 9;
 const MAX_USER_COUNT = 4;
 const MAX_LIKE_COUNT = 50;
 const MAX_COMMENT_COUNT = 20;
+
+const getItems = (range, callback, args = []) => {
+    const items = [];
+    range = range.length === 2 ? getRandomInt(...range) : range[0];
+
+    for (let i = 0; i < range; i++) {
+        if (args.length) {
+            items.push(callback[0](...callback[1]) + args[0]);
+        } else {
+            items.push(callback[0](...callback[1] ?? []));
+        }
+    }
+
+    return items;
+};
 
 const generateUser = () => {
     return {
@@ -60,6 +75,5 @@ const generateArticles = (count) => {
 };
 
 export {
-    generateArticle,
     generateArticles
 }
