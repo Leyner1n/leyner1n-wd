@@ -10,6 +10,19 @@ const articleModalDescriptionElement = articleModalElement.querySelector('.descr
 const photoListElement = articleModalElement.querySelector('.photo-list');
 const articleElement = articleModalElement.querySelector('.comments-list');
 
+const broadcastCommentData = (comments, avatars, names, dates) => {
+    let data = [];
+        for (const comment of comments) {
+            for (const avatar of avatars) {
+                for (const name of names) {
+                    for (const date of dates) {
+                    }
+                }
+            }
+        }
+    renderCommentList(data, )
+}
+
 const renderCommentList = (comments, container) => {
     for (const comment of comments) {
         const html = `
