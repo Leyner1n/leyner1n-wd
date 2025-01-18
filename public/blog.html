@@ -174,6 +174,7 @@
                     <div class="ellipsis">
                         <i class="fa-solid fa-ellipsis article-icons"></i>
                     </div>
+                    <i id="close-article-btn" class="fa-solid fa-xmark exit-article"></i>
                 </div>
             </div>
             <div class="article-container">
@@ -205,17 +206,28 @@
                             </ul>
                         </div>
 
-                        <p class="indicative-inscriptions">Comments</p>
-                        <div class="article-grade">
-                            <form>
-                                <input class="write-comment" type="text" name="write-comment" placeholder="...">
-                                <label></label>
-                                <a>
-                                    <img class="avatar-comment" src="" width="70" alt="">
-                                </a>
-                            </form>
-                            <ul class="comments-list"></ul>
+                    <p class="indicative-inscriptions">Comments</p>
+                    <div class="article-grade">
+                        <div class="about-comments">
+                            <div class="comment-counter"></div>
+                            <div class="sort-comments" style="display: flex">
+                                <i class="fa-solid fa-sort"></i>
+                                <div class="comment-sorter">Sort</div>
+                                <div class="sort-modal">
+<!--                                    <div class="sort-category">Most popular</div>-->
+<!--                                    <div class="sort-category">New</div>-->
+                                </div>
+                            </div>
                         </div>
+                        <form>
+                            <a>
+                                <img class="user-avatar-comments" src="img/avatar/5.jpg" height="60" width="60" alt="">
+                            </a>
+                            <input class="write-comment" type="text" name="write-comment" placeholder="Write a comment">
+                            <button class="send-comment">Send</button>
+                        </form>
+                        <ul class="comments-list"></ul>
+                    </div>
                     </div>
                 </div>
             </div>

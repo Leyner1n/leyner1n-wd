@@ -5,6 +5,7 @@ import './article-form-modal.js';
 import './article-form.js';
 import './main-header.js';
 import './sidebar.js';
+import './sort-write-article-comments.js'
 
 const articleListElement = document.getElementById('app');
 const ARTICLE_COUNT = 30;

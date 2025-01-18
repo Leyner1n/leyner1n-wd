@@ -40,7 +40,7 @@ const generateComment = () => {
         id: getRandomInt(1, MAX_USER_COUNT),
         txt_content: getRandomArrayElement(ARTICLE_COMMENTS),
         user: generateUser(),
-        created_at: '2025-01-01'
+        created_at: getRandomArrayElement(ARTICLE_DATES)
     }
 }
 
