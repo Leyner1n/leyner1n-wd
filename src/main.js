@@ -6,6 +6,7 @@ import './article-form-modal.js';
 import './article-form.js';
 import './main-header.js';
 import './sidebar.js';
+import {setLoginFormSubmit} from "./user/login-form";
 
 const articleListElement = document.getElementById('app');
 const ARTICLE_COUNT = 30;
@@ -15,3 +16,4 @@ renderArticleList(articles, articleListElement);
 setFilterClickHandler(articles);
 
 setSignupFormSubmit();
+setLoginFormSubmit();

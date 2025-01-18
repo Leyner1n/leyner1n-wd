@@ -6,7 +6,7 @@ const SIGNUP_URL = 'https://kekstagram.webdot.pro/api/v1/register';
 
 const setSignupFormSubmit = () => {
     signupFormElement.addEventListener('submit', (evt) => {
-        evt.preventDefault();
+        evt.preventDefault(); // отменяет поведение по умолчанию ( не перензагрузит страницу кпримеру)
         const xhr = new XMLHttpRequest();
 
         xhr.addEventListener('load', () => {
@@ -21,8 +21,8 @@ const setSignupFormSubmit = () => {
         const data = new FormData(signupFormElement);
         xhr.send(data);
     });
-}
+};
 
 export {
     setSignupFormSubmit
-}
+};
