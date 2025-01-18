@@ -10,11 +10,8 @@ const setSignupFormSubmit = () => {
         const xhr = new XMLHttpRequest();
 
         xhr.addEventListener('load', () => {
-            // if (xhr.status === Response.CREATED || xhr.status === Response.UNPROCESSABLE_CONTENT) {
-            //     console.log(JSON.parse(xhr.response));
-            // }
-            if ([Response.CREATED, Response.UNPROCESSABLE_CONTENT].includes(xhr.status)) {
-                console.log(JSON.parse(xhr.response))
+            if (xhr.status === Response.CREATED || xhr.status === Response.UNAUTHORIZED) {
+                console.log(xhr.response);
             }
         });
 
