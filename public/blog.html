@@ -161,11 +161,20 @@
             <div class="head-modal-article">
                 <div class="user">
                     <img class="avatar" src="" width="70" alt="">
-                    <a class="username">placeholder</a>
-                    <time class="created-at" datetime="">01.01.2024</time>
+                    <div class="creator-info">
+                        <a class="username">placeholder</a>
+                        <p class="quantity-followers">13 followers</p>
+                    </div>
+                    <button class="follow-btn">Follow</button>
                 </div>
                 <div class="evaluate-article">
-                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-heart article-icons"></i>
+                    <i class="fa-regular fa-bookmark article-icons"></i>
+                    <i class="fa-solid fa-share article-icons"></i>
+                    <div class="ellipsis">
+                        <i class="fa-solid fa-ellipsis article-icons"></i>
+                    </div>
+                    <i id="close-article-btn" class="fa-solid fa-xmark exit-article"></i>
                 </div>
             </div>
             <div class="article-container">
@@ -179,13 +188,46 @@
                             <p class="content"></p>
                             <div class="description">placeholder</div>
                         </div>
-                        <div class="">
-
+                        <p class="indicative-inscriptions">Project info</p>
+                        <div class="article-card-info">
+                            <div class="article-cap">
+                                <div class="views">1234 views</div>
+                                <time class="created-at" datetime="">01.01.2024</time>
+                            </div>
+                            <ul class="creator-urls">
+                                <li>
+                                    Website:
+                                    <a class="website-url" href="https://youtu.be/dQw4w9WgXcQ?si=hoFHsryB4rpHQqgr">https://youtu.be/dQw4w9WgXcQ?si=hoFHsryB4rpHQqgr</a>
+                                </li>
+                                <li>
+                                    Reposity:
+                                    <a class="repository-url" href="https://youtu.be/dQw4w9WgXcQ?si=hoFHsryB4rpHQqgr">https://youtu.be/dQw4w9WgXcQ?si=hoFHsryB4rpHQqgr</a>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
 
+                    <p class="indicative-inscriptions">Comments</p>
                     <div class="article-grade">
+                        <div class="about-comments">
+                            <div class="comment-counter"></div>
+                            <div class="sort-comments" style="display: flex">
+                                <i class="fa-solid fa-sort"></i>
+                                <div class="comment-sorter">Sort</div>
+                                <div class="sort-modal">
+<!--                                    <div class="sort-category">Most popular</div>-->
+<!--                                    <div class="sort-category">New</div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <form>
+                            <a>
+                                <img class="user-avatar-comments" src="img/avatar/5.jpg" height="60" width="60" alt="">
+                            </a>
+                            <input class="write-comment" type="text" name="write-comment" placeholder="Write a comment">
+                            <button class="send-comment">Send</button>
+                        </form>
                         <ul class="comments-list"></ul>
+                    </div>
                     </div>
                 </div>
             </div>
