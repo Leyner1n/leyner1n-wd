@@ -1,6 +1,7 @@
 import { generateArticles } from './data.js';
 import { renderArticleList } from './article-list.js';
 import { setFilterClickHandler } from './filters.js';
+import {setLoginFormSubmit} from "./user/login-form";
 import { setSignupFormSubmit } from './user/signup-form.js';
 import './article-form-modal.js';
 import './article-form.js';
@@ -16,3 +17,4 @@ renderArticleList(articles, articleListElement);
 setFilterClickHandler(articles);
 
 setSignupFormSubmit();
+setLoginFormSubmit();
