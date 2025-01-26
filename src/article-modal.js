@@ -10,7 +10,10 @@ const articleModalTitleElement = articleModalElement.querySelector('.title');
 const articleModalDescriptionElement = articleModalElement.querySelector('.description');
 const photoListElement = articleModalElement.querySelector('.photo-list');
 const articleElement = articleModalElement.querySelector('.comments-list');
-const articleCommentCounterelement = articleModalElement.querySelector('.comment-counter')
+const articleCommentCounterelement = articleModalElement.querySelector('.comment-counter');
+const commentInputElement = articleModalElement.querySelector('.write-comment');
+const articleInfoElement = articleModalElement.querySelector('.article-info');
+console.log(articleInfoElement);
 
 const renderCommentList = (comments, container) => {
     for (const comment of comments) {
@@ -53,6 +56,8 @@ const openArticleModal = (article) => {
 }
 
 const closeArticleModal = () => {
+    articleInfoElement.scrollTop = 0;
+    commentInputElement.value = '';
     articleModalElement.classList.remove('open');
     document.body.classList.remove('modal-open');
 
