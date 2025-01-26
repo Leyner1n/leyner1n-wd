@@ -1,4 +1,4 @@
-import { HTTPResponseStatus as Response } from "../enum.js";
+import { HTTPResponseStatus as Response } from '../enum.js';
 
 const loginFormElement = document.querySelector('#login-modal form');
 

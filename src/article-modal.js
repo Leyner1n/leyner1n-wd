@@ -1,4 +1,4 @@
-import {renderPhotoList} from "./article-list";
+import { renderPhotoList } from './article-list.js';
 
 const articleModalElement = document.getElementById('article-modal');
 

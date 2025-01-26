@@ -1,47 +1,31 @@
-const articleFormModal = document.getElementById('article-form-modal');
-const articleFormOpenElement = document.getElementById('create-card');
-const articleFormCloseBtn = document.getElementById('close-btn');
+const articleModalElement = document.getElementById('article-form-modal');
+const articleModalCloseElement = articleModalElement.querySelector('#close-btn');
+const homeBtnElement = document.getElementById('home-btn');
 
-
-const homeBtn = document.getElementById('home-btn');
-const createBtn = document.getElementById('create-card');
-const notifnotificationsBtn = document.getElementById('notifications-btn');
-const messageBtn = document.getElementById('message-btn');
-
-const btnsArray = [
-    homeBtn,
-    createBtn,
-    notifnotificationsBtn,
-    messageBtn
-]
-
-const openArticleFormModal = () => {
-    articleFormModal.classList.add('open');
+const openArticleModal = () => {
+    articleModalElement.classList.add('open');
     document.body.classList.add('modal-open');
 
-    homeBtn.addEventListener('click', onCloseBtnClick)
-    articleFormCloseBtn.addEventListener('click', onCloseBtnClick)
-    document.addEventListener('keydown', onEscKeyDown);
-}
+    homeBtnElement.addEventListener('click', closeArticleModal);
+    articleModalCloseElement.addEventListener('click', closeArticleModal);
+    document.addEventListener('keydown', onModalEscKeydown);
+};
 
-const closeArticleFormModal = () => {
-    articleFormModal.classList.remove('open');
+const closeArticleModal = () => {
+    articleModalElement.classList.remove('open');
     document.body.classList.remove('modal-open');
 
-    document.removeEventListener('keydown', onEscKeyDown);
-}
+    homeBtnElement.removeEventListener('click', closeArticleModal);
+    articleModalCloseElement.removeEventListener('click', closeArticleModal);
+    document.removeEventListener('keydown', onModalEscKeydown);
+};
 
-const onCloseBtnClick = () => {
-    articleFormModal.classList.remove('open');
-    document.body.classList.remove('modal-open');
-}
-
-const onEscKeyDown = (evt) => {
+const onModalEscKeydown = (evt) => {
     if (evt.code === 'Escape') {
-        closeArticleFormModal()
+        closeArticleModal();
     }
-}
+};
 
-if (articleFormOpenElement) {
-    articleFormOpenElement.addEventListener('click', openArticleFormModal);
+export {
+    openArticleModal
 }

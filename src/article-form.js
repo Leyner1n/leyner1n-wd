@@ -1,99 +1,49 @@
-const addPostBtn = document.getElementById('add-post-btn');
-const projectNameElement = document.getElementById('project-name-txt');
-const shortDescriptionElement = document.getElementById('short-description-txt');
-const descriptionElement = document.getElementById('description-txt');
-const repositoryUrlElement = document.getElementById('repository-url');
-const hostUrlElement = document.getElementById('host-url');
+const articleModalElement = document.getElementById('article-form-modal');
+const submitBtnElement = articleModalElement.querySelector('#add-post-btn');
 
-const PROJECT_NAME_LIMITATION = [2, 30];
-const SHORT_DESCRIPTION_LIMITATION = [10, 40];
-const DESCRIPTION_LIMITATION = [20, 250];
+const articleFormElement = articleModalElement.querySelector('form');
+const projectNameInputElement = articleModalElement.querySelector('#project-name-txt');
+const shortDescInputElement = articleModalElement.querySelector('#short-description-txt');
+const descInputElement = articleModalElement.querySelector('#description-txt');
+const repositoryLinkElement = articleModalElement.querySelector('#repository-url');
+const websiteLinkElement = articleModalElement.querySelector('#host-url');
 
-const checkProjectName = (evt) => {
-    let error = 'rgb(45, 45, 45)';
+const PROJECT_NAME_LENGTH = [2, 30];
+const SHORT_DESCRIPTION_LENGTH = [10, 40];
+const DESCRIPTION_LENGTH = [20, 250];
 
-    if (evt.target.value.length >  PROJECT_NAME_LIMITATION[1]) {
-        error = '#5e1e1e';
-    }
+const DEFAULT_INPUT_COLOR = 'rgb(45, 45, 45)';
+const ERROR_INPUT_COLOR = '#5e1e1e';
 
-    evt.target.setAttribute('style', 'background-color: ' + error);
-}
+const changeInputColor = (inputElement, hasError) => {
+    const color = hasError ? ERROR_INPUT_COLOR : DEFAULT_INPUT_COLOR;
+    inputElement.setAttribute('style', `background-color: ${color}`);
+};
 
-const checkshortDescriptionElement = (evt) => {
-    let error = 'rgb(45, 45, 45)';
-
-    if (evt.target.value.length >  SHORT_DESCRIPTION_LIMITATION[1]) {
-        error = '#5e1e1e';
-    }
-
-    evt.target.setAttribute('style', 'background-color: ' + error);
-}
-
-const checkDescriptionElement = (evt)=> {
-    let error = 'rgb(45, 45, 45)';
-
-
-    if (evt.target.value.length >  DESCRIPTION_LIMITATION[1]) {
-        error = '#5e1e1e';
-    }
-
-    evt.target.setAttribute('style', 'background-color: ' + error);
-}
-
-const checkUrl = (evt) => {
-    let error = 'rgb(45, 45, 45)';
-
-    if (evt.target.validity.typeMismatch) {
-        error = '#5e1e1e';
-    }
-
-    evt.target.setAttribute('style', 'background-color: ' + error);
-}
-
-const validateBeforeClickBtn = () => {
-    const formInformationArray = [
-        projectNameElement,
-        shortDescriptionElement,
-        descriptionElement
-    ];
-    let colorArray = [
-        'rgb(45, 45, 45)',
-        'rgb(45, 45, 45)',
-        'rgb(45, 45, 45)',
-        'rgb(45, 45, 45)',
-        'rgb(45, 45, 45)'
-    ];
-    let conditionArray = [
-        PROJECT_NAME_LIMITATION[0],
-        SHORT_DESCRIPTION_LIMITATION[0],
-        DESCRIPTION_LIMITATION[0]
-    ];
-
-    let counter = 0;
-    for (let info of formInformationArray) {
-        if (info.value.length < conditionArray[counter]) {
-            colorArray.splice(counter, 1, '#5e1e1e');
+const getCheckLength = (limit, inputElement1 = null) => {
+    return (evt) => {
+        if (inputElement1) {
+            evt.preventDefault();
         }
-        counter += 1
-    }
 
-    if (hostUrlElement.value.length === 0) {
-        colorArray.splice(3, 1, '#5e1e1e');
-    }
-    if (repositoryUrlElement.value.length === 0) {
-        colorArray.splice(4, 1, '#5e1e1e');
-    }
+        const inputElement2 = inputElement1 ?? evt.target
+        const valueLength = inputElement2.value.length;
+        const isError = inputElement1 ? valueLength < limit : inputElement1 > limit;
+        changeInputColor(inputElement2, isError);
+    };
+};
 
-    projectNameElement.setAttribute('style', 'background-color: ' + colorArray[0]);
-    shortDescriptionElement.setAttribute('style', 'background-color: ' + colorArray[1]);
-    descriptionElement.setAttribute('style', 'background-color: ' + colorArray[2]);
-    hostUrlElement.setAttribute('style', 'background-color: ' + colorArray[3]);
-    repositoryUrlElement.setAttribute('style', 'background-color: ' + colorArray[4]);
-}
+const checkType = (evt) => {
+    const isError = evt.target.validity.typeMismatch;
+    changeInputColor(evt.target, isError);
+};
 
-repositoryUrlElement.addEventListener('input', checkUrl);
-hostUrlElement.addEventListener('input', checkUrl);
-projectNameElement.addEventListener('input', checkProjectName);
-shortDescriptionElement.addEventListener('input', checkshortDescriptionElement);
-descriptionElement.addEventListener('input', checkDescriptionElement);
-addPostBtn.addEventListener('click', validateBeforeClickBtn);
+repositoryLinkElement.addEventListener('input', checkType);
+websiteLinkElement.addEventListener('input', checkType);
+projectNameInputElement.addEventListener('input', getCheckLength(PROJECT_NAME_LENGTH[1]));
+shortDescInputElement.addEventListener('input', getCheckLength(SHORT_DESCRIPTION_LENGTH[1]));
+descInputElement.addEventListener('input', getCheckLength(DESCRIPTION_LENGTH[1]));
+
+articleFormElement.addEventListener('submit', getCheckLength(PROJECT_NAME_LENGTH[0], projectNameInputElement));
+articleFormElement.addEventListener('submit', getCheckLength(SHORT_DESCRIPTION_LENGTH[0], shortDescInputElement));
+articleFormElement.addEventListener('submit', getCheckLength(DESCRIPTION_LENGTH[0], descInputElement));
