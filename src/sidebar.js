@@ -1,3 +1,5 @@
+import { openArticleModal } from './article-form-modal.js';
+
 const sidebarElement = document.querySelector('.sidebar');
 const homeBtnElement = sidebarElement.querySelector('#home-btn');
 const articleFormOpenElement = sidebarElement.querySelector('#create-card');
@@ -27,4 +29,8 @@ const openNavList = (evt) => {
 
 for (const btnElement of btnElements) {
     btnElement.addEventListener('click', openNavList);
+}
+
+if (articleFormOpenElement) {
+    articleFormOpenElement.addEventListener('click', openArticleModal);
 }

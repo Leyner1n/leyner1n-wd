@@ -127,31 +127,23 @@
                         <div class="type-form">Project name</div>
                         <input id="project-name-txt" class="form-input" name="project-name" type="text" placeholder="Add a project name...">
                         <label id="label-project-name-txt" class="input-rules active" for="project-name-txt">This form requires 2 to 30 words</label>
-                    </form>
-                    <form>
                         <div class="type-form">Short description</div>
                         <input id="short-description-txt" class="form-input" name="short-description" type="text" placeholder="Add short description...">
                         <label id="label-short-description-txt" class="input-rules active" for="short-description-txt">This form requires 10 to 40 words</label>
-                    </form>
-                    <form>
                         <div class="type-form">Description</div>
                         <input id="description-txt" class="form-input" name="descriprion" type="text" placeholder="Add description...">
                         <label id="label-description-txt" class="input-rules active" for="description-txt">This form requires 20 to 250 words</label>
-                    </form>
-                    <form>
                         <div class="type-form">Link to your website</div>
-                        <input id="host-url" class="form-input" name="host-url" type="url" placeholder="Add project link...">
+                        <input id="host-url" class="form-input" name="host-url" type="text" placeholder="Add project link...">
                         <label id="label-host-url" class="input-rules" for="host-url"></label>
-                    </form>
-                    <form>
                         <div class="type-form">Link to the project repository</div>
-                        <input id="repository-url" class="form-input" name="repository-url" type="url" placeholder="Add repository link...">
+                        <input id="repository-url" class="form-input" name="repository-url" type="text" placeholder="Add repository link...">
                         <label id="label-repository-url" class="input-rules" for="repository-url"></label>
+                        <div class="add-post-btn">
+                            <button id="add-post-btn" type="submit">Add Post</button>
+                        </div>
                     </form>
                 </div>
-            </div>
-            <div class="add-post-btn">
-                <button id="add-post-btn">Add Post</button>
             </div>
         </div>
     </div>
@@ -245,7 +237,7 @@
        </form>
     </div>
 
-    <div id="login-modal" style="display: block; position: fixed; top: 50px; left: 50px; width: 50vw; height: 50vh; background: aliceblue; padding: 50px">
+    <div id="login-modal" style="display: none; position: fixed; top: 50px; left: 50px; width: 50vw; height: 50vh; background: aliceblue; padding: 50px">
         <form enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: flex-start">
             <input type="text" name="email" placeholder="email">
             <input type="text" name="password" placeholder="password">

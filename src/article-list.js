@@ -1,4 +1,4 @@
-import {openArticleModal} from "./article-modal";
+import { openArticleModal } from './article-modal.js';
 
 const articleTemplate = document.getElementById('article');
 const articleTemplateContent = articleTemplate.content;
