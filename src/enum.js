@@ -25,9 +25,15 @@ const Extention = {
     Jpg: '.jpg'
 };
 
+const EventType = {
+    Input: 'input',
+    Submit: 'submit'
+};
+
 export {
     Filter,
     Locale,
     Extention,
+    EventType,
     HTTPResponseStatus
 };
