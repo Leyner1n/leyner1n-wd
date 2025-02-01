@@ -1,6 +1,4 @@
-import {EventType} from "./enum";
-import * as events from "events";
-
+import {EventType} from './enum.js';
 
 const articleModalElement = document.getElementById('article-form-modal');
 
