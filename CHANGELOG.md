@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- refactor-js [WEB-25](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-25)
+- refactor-js [WEB-24](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-24)
 - add-ogin [WEB-23](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-23) 
 - redisigned-article-card [WEB-21](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-21)
 - add-registration [WEB-22](https://webdot.youtrack.cloud/agiles/171-14/current?issue=WEB-22)

@@ -13,7 +13,6 @@ const articleElement = articleModalElement.querySelector('.comments-list');
 const articleCommentCounterelement = articleModalElement.querySelector('.comment-counter');
 const commentInputElement = articleModalElement.querySelector('.write-comment');
 const articleInfoElement = articleModalElement.querySelector('.article-info');
-console.log(articleInfoElement);
 
 const renderCommentList = (comments, container) => {
     for (const comment of comments) {

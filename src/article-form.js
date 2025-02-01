@@ -1,3 +1,7 @@
+import {EventType} from "./enum";
+import * as events from "events";
+
+
 const articleModalElement = document.getElementById('article-form-modal');
 
 const articleFormElement = articleModalElement.querySelector('form');
@@ -14,12 +18,67 @@ const DESCRIPTION_LENGTH = [20, 250];
 const DEFAULT_INPUT_COLOR = 'rgb(45, 45, 45)';
 const ERROR_INPUT_COLOR = '#5e1e1e';
 
+const listeners = {};
+listeners[EventType.Input] = [
+    {
+        element: projectNameInputElement,
+        callback: getCheckLength(PROJECT_NAME_LENGTH[1])
+    },
+    {
+        element: shortDescInputElement,
+        callback: getCheckLength(SHORT_DESCRIPTION_LENGTH[1])
+    },
+    {
+        element: descInputElement,
+        callback: getCheckLength(DESCRIPTION_LENGTH[1])
+    },
+    {
+        element: repositoryLinkElement,
+        callback: getCheckUrl()
+    },
+    {
+        element: websiteLinkElement,
+        callback: getCheckUrl()
+    },
+];
+
+listeners[EventType.Submit] = [
+    {
+        element: articleFormElement,
+        callback: getCheckLength(PROJECT_NAME_LENGTH[0], projectNameInputElement)
+    },
+    {
+        element: articleFormElement,
+        callback: getCheckLength(SHORT_DESCRIPTION_LENGTH[0], shortDescInputElement)
+    },
+    {
+        element: articleFormElement,
+        callback: getCheckLength(DESCRIPTION_LENGTH[0], descInputElement)
+    },
+    {
+        element: articleFormElement,
+        callback: getCheckRequired(repositoryLinkElement)
+    },
+    {
+        element: articleFormElement,
+        callback: getCheckRequired(websiteLinkElement)
+    },
+    {
+        element: articleFormElement,
+        callback: getCheckUrl(repositoryLinkElement)
+    },
+    {
+        element: articleFormElement,
+        callback: getCheckUrl(websiteLinkElement)
+    },
+];
+
 const changeInputColor = (inputElement, hasError) => {
     const color = hasError ? ERROR_INPUT_COLOR : DEFAULT_INPUT_COLOR;
-    inputElement.setAttribute('style', `background-co lor: ${color}`);
+    inputElement.setAttribute('style', `background-color: ${color}`);
 };
 
-const getCheckLength = (limit, inputElement = null) => {
+function getCheckLength(limit, inputElement = null) {
     return (evt) => {
         if (inputElement) {
             evt.preventDefault();
@@ -37,9 +96,9 @@ const getCheckLength = (limit, inputElement = null) => {
 
         changeInputColor(actualInputElement, isError);
     };
-};
+}
 
-const getCheckUrl = (inputElement = null) => {
+function getCheckUrl(inputElement = null) {
     return (evt) => {
         const actualInputElement = inputElement ?? evt.target
         let isError = false;
@@ -50,9 +109,9 @@ const getCheckUrl = (inputElement = null) => {
 
         changeInputColor(actualInputElement, isError);
     }
-};
+}
 
-const getCheckRequired = (inputElement = null) => {
+function getCheckRequired(inputElement = null) {
     return (evt) => {
         const actualInputElement = inputElement ?? evt.target
         let isError = false;
@@ -65,16 +124,9 @@ const getCheckRequired = (inputElement = null) => {
     }
 }
 
-projectNameInputElement.addEventListener('input', getCheckLength(PROJECT_NAME_LENGTH[1]));
-shortDescInputElement.addEventListener('input', getCheckLength(SHORT_DESCRIPTION_LENGTH[1]));
-descInputElement.addEventListener('input', getCheckLength(DESCRIPTION_LENGTH[1]));
-repositoryLinkElement.addEventListener('input', getCheckUrl());
-websiteLinkElement.addEventListener('input', getCheckUrl());
-
-articleFormElement.addEventListener('submit', getCheckLength(PROJECT_NAME_LENGTH[0], projectNameInputElement));
-articleFormElement.addEventListener('submit', getCheckLength(SHORT_DESCRIPTION_LENGTH[0], shortDescInputElement));
-articleFormElement.addEventListener('submit', getCheckLength(DESCRIPTION_LENGTH[0], descInputElement));
-articleFormElement.addEventListener('submit', getCheckRequired(repositoryLinkElement));
-articleFormElement.addEventListener('submit', getCheckRequired(websiteLinkElement));
-articleFormElement.addEventListener('submit', getCheckUrl(repositoryLinkElement));
-articleFormElement.addEventListener('submit', getCheckUrl(websiteLinkElement));
+for (const event of Object.keys(listeners)) {
+    // деструктуризация и динамическая подстановка ключа
+    for (const {element, callback} of listeners[event]) {
+        element.addEventListener(event, callback);
+    }
+}
